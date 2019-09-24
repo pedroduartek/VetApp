@@ -15,16 +15,14 @@ namespace VetApp.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Owner>()
-                .HasMany(o => o.Pets)
-                .WithOne(a => a.Owner);
+            modelBuilder.Entity<Pet>()
+                .HasOne(p => p.Owner);
 
             modelBuilder.Entity<Owner>(o =>
             {
                 o.Property(ow => ow.Name).IsRequired();
                 o.Property(ow => ow.Birthday).IsRequired();
                 o.Property(ow => ow.Contact).IsRequired();
-                o.Property(ow => ow.Pets).IsRequired();
 
             });
 

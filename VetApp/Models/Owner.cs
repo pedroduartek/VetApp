@@ -10,6 +10,6 @@ namespace VetApp.Models
         public DateTime Birthday { get; set; }
         public int Contact { get; set; }
         public ICollection<Pet> Pets { get; set; }
-        public int AnimalId { get; set; }
+        public int PetId { get; set; }
     }
 }

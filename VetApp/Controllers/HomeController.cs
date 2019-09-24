@@ -6,6 +6,12 @@ namespace VetApp.Controllers
 {
     public class HomeController : Controller
     {
+        private VetAppDbContext _context { get; set; }
+
+        public HomeController()
+        {
+            _context = new VetAppDbContext();
+        }
         public IActionResult Index()
         {
             return View();
@@ -17,5 +23,19 @@ namespace VetApp.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        [HttpGet]
+        public IActionResult AddPet()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddPet(AddPetViewModel viewModel)
+        {
+            _context.Pets.Add(viewModel.Pet);
+            return View();
+        }
+
     }
 }

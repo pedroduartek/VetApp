@@ -9,7 +9,7 @@ namespace VetApp.Models
         public string Name { get; set; }
         public DateTime Birthday { get; set; }
         public int Contact { get; set; }
-        public ICollection<Animal> Animals { get; set; }
+        public ICollection<Pet> Pets { get; set; }
         public int AnimalId { get; set; }
     }
 }

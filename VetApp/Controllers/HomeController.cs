@@ -27,13 +27,14 @@ namespace VetApp.Controllers
         [HttpGet]
         public IActionResult AddPet()
         {
-            return View();
+            var pets = _context.Pets;
+            return View(pets);
         }
 
         [HttpPost]
         public IActionResult AddPet(AddPetViewModel viewModel)
         {
-            _context.Pets.Add(viewModel.Pet);
+            
             return View();
         }
 

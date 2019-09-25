@@ -10,13 +10,15 @@ namespace VetApp.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("server=.;database=VetDb;trusted_connection=true;");
+            optionsBuilder.UseSqlServer(
+                @"Server=THINKPADDOPEDRO\SQLEXPRESS;Database=VetDataBase;Integrated Security=True");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Pet>()
-                .HasOne(p => p.Owner);
+                .HasOne(p => p.Owner)
+                .WithMany(o => o.Pets);
 
             modelBuilder.Entity<Owner>(o =>
             {
@@ -29,7 +31,7 @@ namespace VetApp.Models
             modelBuilder.Entity<Pet>(a =>
             {
                 a.Property(an => an.Name).IsRequired();
-                a.Property(an => an.Owner).IsRequired();
+                a.Property(an => an.OwnerId).IsRequired();
             });
         }
     }

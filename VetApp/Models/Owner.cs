@@ -12,4 +12,5 @@ namespace VetApp.Models
         public ICollection<Pet> Pets { get; set; }
         public int PetId { get; set; }
     }
+
 }

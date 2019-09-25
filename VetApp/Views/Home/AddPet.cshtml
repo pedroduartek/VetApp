@@ -1,40 +1,5 @@
-﻿@model AddPetViewModel
-
+﻿
 @{
     ViewBag.Title = "title";
     Layout = "_Layout";
 }
-
-<h2>Add Pet</h2>
-
-<form asp-action="AddPet" method="post">
-    <h3>Pet:</h3>
-    <label asp-for="Pet.Name"></label>
-    <input asp-for="Pet.Name" />
-    <br />
-    <label asp-for="Pet.Birthday"></label>
-    <input asp-for="Pet.Birthday" />
-    <br />
-
-    <label asp-for="Pet.PetType"></label>
-    Dog <input type="radio" value="0" asp-for="Pet.PetType" />
-    Cat <input type="radio" value="1" asp-for="Pet.PetType" />
-    Bird <input type="radio" value="2" asp-for="Pet.PetType" />
-
-
-    <h3>Owner:</h3>
-    <label asp-for="Owner.Name"></label>
-    <input asp-for="Owner.Name" />
-    <br />
-
-    <label asp-for="Owner.Birthday"></label>
-    <input asp-for="Owner.Birthday" />
-    <br />
-    <label asp-for="Owner.Contact"></label>
-    <input asp-for="Owner.Contact" />
-
-    <br />
-    <button type="submit">Add new pet</button>
-</form>
-
-

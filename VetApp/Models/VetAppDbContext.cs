@@ -18,7 +18,8 @@ namespace VetApp.Models
         {
             modelBuilder.Entity<Pet>()
                 .HasOne(p => p.Owner)
-                .WithMany(o => o.Pets);
+                .WithMany(o => o.Pets)
+                .IsRequired();
 
             modelBuilder.Entity<Owner>(o =>
             {

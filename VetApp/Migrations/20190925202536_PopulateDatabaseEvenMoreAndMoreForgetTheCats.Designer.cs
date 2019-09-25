@@ -10,8 +10,8 @@ using VetApp.Models;
 namespace VetApp.Migrations
 {
     [DbContext(typeof(VetAppDbContext))]
-    [Migration("20190925140158_PopulateDatabase")]
-    partial class PopulateDatabase
+    [Migration("20190925202536_PopulateDatabaseEvenMoreAndMoreForgetTheBirds")]
+    partial class PopulateDatabaseEvenMoreAndMoreForgetTheBirds
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -29,12 +29,11 @@ namespace VetApp.Migrations
 
                     b.Property<DateTime>("Birthday");
 
-                    b.Property<int>("Contact");
+                    b.Property<string>("Contact")
+                        .IsRequired();
 
                     b.Property<string>("Name")
                         .IsRequired();
-
-                    b.Property<int>("PetId");
 
                     b.HasKey("Id");
 

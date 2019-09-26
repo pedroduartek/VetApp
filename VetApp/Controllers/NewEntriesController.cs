@@ -21,28 +21,37 @@ namespace VetApp.Controllers
 
         public IActionResult AddPet()
         {
-            return View();
+            var newPet = new Pet();
+            return View(newPet);
         }
 
         [HttpPost]
         public IActionResult AddPet(Pet newPet)
         {
-            _context.Pets.Add(newPet);
-            _context.SaveChanges();
-
+            if (ModelState.IsValid)
+            {
+                _context.Pets.Add(newPet);
+                _context.SaveChanges();
+            }
             return View("PetAdded");
         }
 
         public IActionResult AddOwner()
         {
-            return View();
+            var newOwner = new Owner();
+
+            return View(newOwner);
         }
         
         [HttpPost]
         public IActionResult AddOwner(Owner newOwner)
         {
-            _context.Owners.Add(newOwner);
-            _context.SaveChanges();
+            if (ModelState.IsValid)
+            {
+                _context.Owners.Add(newOwner);
+                _context.SaveChanges();
+            }
+            
             return View("AddPet");
         }
 

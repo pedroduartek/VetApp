@@ -1,8 +1,37 @@
-﻿
+﻿@model Pet
 @{
     ViewBag.Title = "Register Pet";
 }
 
+<h3 class="text-center">Register new pet.</h3>
+
 <form asp-action="AddPet" method="post">
-    <button type="submit">Register Pet</button>
+    <div class="form-group">
+        <label asp-for="Name">Name:</label>
+        <input asp-for="Name" class="form-control"/>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Birthday">Birthday:</label>
+        <input asp-for="Birthday" type="date" class="form-control"/>
+    </div>
+    <div class="form-group form-inline">
+        <label class="radio">
+            <input type="radio" asp-for="PetType" value="1">
+            Dog
+        </label>
+        
+        <label class="radio">
+            <input type="radio" asp-for="PetType" value="2">
+            Cat
+        </label>
+        
+        <label class="radio">
+            <input type="radio" asp-for="PetType" value="3">
+            Bird
+        </label>
+    </div>
+    
+
+    <button type="submit" class="btn btn-outline-secondary">Register Pet</button>
 </form>

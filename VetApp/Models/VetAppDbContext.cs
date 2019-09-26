@@ -24,7 +24,9 @@ namespace VetApp.Models
             modelBuilder.Entity<Owner>(o =>
             {
                 o.Property(ow => ow.Name).IsRequired();
-                o.Property(ow => ow.Birthday).IsRequired();
+                o.Property(ow => ow.Birthday)
+                    .HasColumnType("Date")
+                    .IsRequired();
                 o.Property(ow => ow.Contact).IsRequired();
 
             });
@@ -33,6 +35,9 @@ namespace VetApp.Models
             {
                 a.Property(an => an.Name).IsRequired();
                 a.Property(an => an.OwnerId).IsRequired();
+                a.Property(an => an.Birthday)
+                    .HasColumnType("Date")
+                    .IsRequired();
             });
         }
     }

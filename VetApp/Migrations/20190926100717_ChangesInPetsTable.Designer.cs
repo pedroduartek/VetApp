@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VetApp.Models;
 
 namespace VetApp.Migrations
 {
     [DbContext(typeof(VetAppDbContext))]
-    partial class VetAppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190926100717_ChangesInPetsTable")]
+    partial class ChangesInPetsTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

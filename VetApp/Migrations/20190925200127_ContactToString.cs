@@ -7,8 +7,8 @@ namespace VetApp.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterColumn<string>(
-                name: "Contact",
-                table: "Owners",
+                "Contact",
+                "Owners",
                 nullable: false,
                 oldClrType: typeof(int));
         }
@@ -16,8 +16,8 @@ namespace VetApp.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterColumn<int>(
-                name: "Contact",
-                table: "Owners",
+                "Contact",
+                "Owners",
                 nullable: false,
                 oldClrType: typeof(string));
         }

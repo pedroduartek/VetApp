@@ -1,0 +1,42 @@
+﻿@model List<Doctor>
+@{
+    ViewData["Title"] = "Doctors";
+}
+
+<h2>Doctors</h2>
+@if (Model.Count == 0)
+{
+    <h4>Without doctors in the Database. <a asp-controller="NewEntries" asp-action=""></a>Add a new one.</h4>
+}
+else
+{
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">License Number</th>
+            <th scope="col">Name</th>
+            <th scope="col">Birthday</th>
+            <th scope="col">Contact</th>
+            <th scope="col">Specialty</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var doctor in Model)
+        {
+            <tr>
+                <th scope="row">@doctor.LicenseNumber</th>
+                <td>@doctor.Name</td>
+                <td>@doctor.Birthday.Day/@doctor.Birthday.Month/@doctor.Birthday.Year</td>
+                <td>@doctor.Contact</td>
+                <td>@doctor.Specialty</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+
+}
+
+
+
+
+

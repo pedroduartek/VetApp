@@ -7,15 +7,15 @@ namespace VetApp.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "PetId",
-                table: "Owners");
+                "PetId",
+                "Owners");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<int>(
-                name: "PetId",
-                table: "Owners",
+                "PetId",
+                "Owners",
                 nullable: false,
                 defaultValue: 0);
         }

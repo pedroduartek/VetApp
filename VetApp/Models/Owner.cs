@@ -11,5 +11,4 @@ namespace VetApp.Models
         public string Contact { get; set; }
         public ICollection<Pet> Pets { get; set; }
     }
-
 }

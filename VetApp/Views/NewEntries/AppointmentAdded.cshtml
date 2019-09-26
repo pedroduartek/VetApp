@@ -1,0 +1,26 @@
+﻿@model Appointment
+@{
+    ViewData["Title"] = "Appointment Booked";
+}
+
+<h3>Appointment was booked.</h3>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Date</th>
+        <th scope="col">Pet Id</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th scope="row">@Model.Id</th>
+        <td>@Model.Date.Day/@Model.Date.Month/@Model.Date.Year @Model.Date.Hour:@Model.Date.Minute</td>
+        <td>@Model.PetId</td>
+    </tr>
+    </tbody>
+</table>
+
+<a asp-action="Index" asp-controller="Home">Go Back to Home</a>
+

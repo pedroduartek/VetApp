@@ -8,12 +8,13 @@ namespace VetApp.Controllers
 {
     public class NewEntriesController : Controller
     {
-        private VetAppDbContext _context { get; set; }
+        private readonly VetAppDbContext _context;
 
         public NewEntriesController()
         {
             _context = new VetAppDbContext();
         }
+
         public IActionResult Index()
         {
             return View();
@@ -22,6 +23,7 @@ namespace VetApp.Controllers
         public IActionResult AddPet()
         {
             var newPet = new Pet();
+
             return View(newPet);
         }
 
@@ -32,8 +34,12 @@ namespace VetApp.Controllers
             {
                 _context.Pets.Add(newPet);
                 _context.SaveChanges();
+                return View("PetAdded", newPet);
             }
-            return View("PetAdded");
+            else
+            {
+                return View();
+            }
         }
 
         public IActionResult AddOwner()
@@ -42,7 +48,7 @@ namespace VetApp.Controllers
 
             return View(newOwner);
         }
-        
+
         [HttpPost]
         public IActionResult AddOwner(Owner newOwner)
         {
@@ -50,21 +56,71 @@ namespace VetApp.Controllers
             {
                 _context.Owners.Add(newOwner);
                 _context.SaveChanges();
+                return View("AddPet");
             }
-            
-            return View("AddPet");
+            else
+            {
+                return View();
+            }
+
         }
+
+
+        public IActionResult AddAppointment()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddAppointment(Appointment newAppointment)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Appointments.Add(newAppointment);
+                _context.SaveChanges();
+                return View("AppointmentAdded", newAppointment);
+            }
+            else
+            {
+                return View();
+            }
+
+        }
+
+
+        public IActionResult AddDoctor()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddDoctor(Doctor newDoctor)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Doctors.Add(newDoctor);
+                _context.SaveChanges();
+                return View("DoctorAdded", newDoctor);
+            }
+            else
+            {
+                return View();
+            }
+
+        }
+
+
+
+
+
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View(new ErrorViewModel {RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier});
         }
 
         
-        
-
-
     }
 }

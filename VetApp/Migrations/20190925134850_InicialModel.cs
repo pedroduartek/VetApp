@@ -9,27 +9,26 @@ namespace VetApp.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Owners",
-                columns: table => new
+                "Owners",
+                table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:ValueGenerationStrategy",
+                            SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(nullable: false),
                     Birthday = table.Column<DateTime>(nullable: false),
                     Contact = table.Column<int>(nullable: false),
                     PetId = table.Column<int>(nullable: false)
                 },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Owners", x => x.Id);
-                });
+                constraints: table => { table.PrimaryKey("PK_Owners", x => x.Id); });
 
             migrationBuilder.CreateTable(
-                name: "Pets",
-                columns: table => new
+                "Pets",
+                table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:ValueGenerationStrategy",
+                            SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(nullable: false),
                     Birthday = table.Column<DateTime>(nullable: false),
                     OwnerId = table.Column<int>(nullable: false),
@@ -39,26 +38,26 @@ namespace VetApp.Migrations
                 {
                     table.PrimaryKey("PK_Pets", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Pets_Owners_OwnerId",
-                        column: x => x.OwnerId,
-                        principalTable: "Owners",
-                        principalColumn: "Id",
+                        "FK_Pets_Owners_OwnerId",
+                        x => x.OwnerId,
+                        "Owners",
+                        "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Pets_OwnerId",
-                table: "Pets",
-                column: "OwnerId");
+                "IX_Pets_OwnerId",
+                "Pets",
+                "OwnerId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Pets");
+                "Pets");
 
             migrationBuilder.DropTable(
-                name: "Owners");
+                "Owners");
         }
     }
 }

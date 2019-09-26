@@ -17,7 +17,5 @@ namespace VetApp.Models
             Cat = 2,
             Bird = 3
         }
-
-
     }
 }

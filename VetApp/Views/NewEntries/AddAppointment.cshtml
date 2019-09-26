@@ -1,0 +1,19 @@
+﻿@model Appointment
+@{
+    ViewBag.Title = "Book an Appointment";
+}
+<h3 class="text-center">Register new doctor.</h3>
+
+<form asp-action="AddAppointment" method="post">
+    <div class="form-group">
+        <label asp-for="Date">Date:</label>
+        <input asp-for="Date" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="PetId">Pet Id:</label>
+        <input asp-for="PetId" class="form-control" />
+    </div>
+    
+    <button type="submit" class="btn btn-outline-secondary">Register Owner</button>
+</form>

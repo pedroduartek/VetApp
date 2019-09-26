@@ -8,16 +8,16 @@ namespace VetApp.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterColumn<DateTime>(
-                name: "Birthday",
-                table: "Pets",
-                type: "Date",
+                "Birthday",
+                "Pets",
+                "Date",
                 nullable: false,
                 oldClrType: typeof(DateTime));
 
             migrationBuilder.AlterColumn<DateTime>(
-                name: "Birthday",
-                table: "Owners",
-                type: "Date",
+                "Birthday",
+                "Owners",
+                "Date",
                 nullable: false,
                 oldClrType: typeof(DateTime));
         }
@@ -25,15 +25,15 @@ namespace VetApp.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterColumn<DateTime>(
-                name: "Birthday",
-                table: "Pets",
+                "Birthday",
+                "Pets",
                 nullable: false,
                 oldClrType: typeof(DateTime),
                 oldType: "Date");
 
             migrationBuilder.AlterColumn<DateTime>(
-                name: "Birthday",
-                table: "Owners",
+                "Birthday",
+                "Owners",
                 nullable: false,
                 oldClrType: typeof(DateTime),
                 oldType: "Date");

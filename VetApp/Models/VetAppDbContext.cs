@@ -4,9 +4,10 @@ namespace VetApp.Models
 {
     public class VetAppDbContext : DbContext
     {
-
         public DbSet<Pet> Pets { get; set; }
         public DbSet<Owner> Owners { get; set; }
+        public DbSet<Appointment> Appointments { get; set; }
+        public DbSet<Doctor> Doctors { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -28,7 +29,6 @@ namespace VetApp.Models
                     .HasColumnType("Date")
                     .IsRequired();
                 o.Property(ow => ow.Contact).IsRequired();
-
             });
 
             modelBuilder.Entity<Pet>(a =>
@@ -38,6 +38,23 @@ namespace VetApp.Models
                 a.Property(an => an.Birthday)
                     .HasColumnType("Date")
                     .IsRequired();
+            });
+
+            modelBuilder.Entity<Appointment>(a =>
+            {
+                a.Property(ap => ap.Date).IsRequired();
+                a.Property(ap => ap.PetId).IsRequired();
+                a.Property(ap => ap.DoctorId).IsRequired();
+                
+            });
+
+            modelBuilder.Entity<Doctor>(d =>
+            {
+                d.HasKey(dc => dc.LicenseNumber);
+                d.Property(dc => dc.Name).IsRequired();
+                d.Property(dc => dc.Birthday).IsRequired();
+                d.Property(dc => dc.Specialty).IsRequired();
+                d.Property(dc => dc.Contact).IsRequired();
             });
         }
     }

@@ -26,7 +26,7 @@ else
             @foreach (var appointment in Model)
             {
                 <tr>
-                    <th scope="row">@appointment.Id</th>
+                    <th scope="row"><a asp-action="PetDetails" asp-route-id="@appointment.Id">@appointment.Id</a></th>
                     <td>@appointment.Pet.Name</td>
                     <td>@appointment.Pet.Owner.Name</td>
                     <td>@appointment.Date.Day/@appointment.Date.Month/@appointment.Date.Year @appointment.Date.Hour:@appointment.Date.Minute</td>

@@ -26,6 +26,14 @@ namespace VetApp.Controllers
             return View(pets);
         }
 
+        public IActionResult PetDetails(int id)
+        {
+            var pet = _context.Pets.Find(id);
+
+            return View(pet);
+        }
+
+
         public IActionResult Owners()
         {
             var owners = _context.Owners.OrderBy(o => o.Id).ToList();
@@ -33,12 +41,26 @@ namespace VetApp.Controllers
             return View(owners);
         }
 
+        public IActionResult OwnerDetails(int id)
+        {
+            var owner = _context.Owners.Find(id);
+
+            return View(owner);
+        }
+
 
         public IActionResult Appointments()
         {
-            var appointments = _context.Appointments.Include(a => a.Pet.Owner).OrderBy(a => a.Date).ToList();
+            var appointments = _context.Appointments.Include(a => a.Pet).ThenInclude(p => p.Owner).OrderBy(a => a.Date).ToList();
 
             return View(appointments);
+        }
+
+        public IActionResult AppointmentDetails(int id)
+        {
+            var appointment = _context.Appointments.Find(id);
+
+            return View(appointment);
         }
 
 
@@ -47,6 +69,13 @@ namespace VetApp.Controllers
             var doctors = _context.Doctors.OrderBy(a => a.Name).ToList();
 
             return View(doctors);
+        }
+
+        public IActionResult DoctorDetails(int id)
+        {
+            var doctor = _context.Doctors.Find(id);
+
+            return View(doctor);
         }
 
 

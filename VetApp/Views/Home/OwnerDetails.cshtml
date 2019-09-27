@@ -1,0 +1,30 @@
+﻿@model Owner
+@{
+    ViewData["Title"] = "Owners";
+    ViewData["OwnersActive"] = "active";
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Birthday</th>
+            <th scope="col">Contact</th>
+        </tr>
+    </thead>
+    <tbody>
+            <tr>
+                <th scope="row">@Model.Id</th>
+                <td>@Model.Name</td>
+                <td>@Model.Birthday.Day/@Model.Birthday.Month/@Model.Birthday.Year</td>
+                <td>@Model.Contact</td>
+            </tr>
+    </tbody>
+</table>
+
+
+
+
+
+
+

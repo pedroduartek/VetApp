@@ -27,7 +27,7 @@ else
         {
             <tr>
                 <th scope="row">@doctor.LicenseNumber</th>
-                <td>@doctor.Name</td>
+                <td><a asp-action="DoctorDetails" asp-route-id="@doctor.LicenseNumber">@doctor.Name</a></td>
                 <td>@doctor.Birthday.Day/@doctor.Birthday.Month/@doctor.Birthday.Year</td>
                 <td>@doctor.Contact</td>
                 <td>@doctor.Specialty</td>

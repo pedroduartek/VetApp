@@ -26,7 +26,7 @@ else
             {
                 <tr>
                     <th scope="row">@owner.Id</th>
-                    <td>@owner.Name</td>
+                    <td><a asp-action="OwnerDetails" asp-route-id="@owner.Id">@owner.Name</a></td>
                     <td>@owner.Birthday.Day/@owner.Birthday.Month/@owner.Birthday.Year</td>
                     <td>@owner.Contact</td>
                 </tr>

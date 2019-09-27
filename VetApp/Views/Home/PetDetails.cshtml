@@ -1,0 +1,32 @@
+﻿@model Pet
+@{
+    ViewData["Title"] = "Pets";
+    ViewData["PetsActive"] = "active";
+}
+
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Birthday</th>
+            <th scope="col">Owner</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">@Model.Id</th>
+                <td>@Model.Name</td>
+                <td>@Model.Birthday.Day/@Model.Birthday.Month/@Model.Birthday.Year</td>
+                <td>@Model.OwnerId</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+
+
+
+

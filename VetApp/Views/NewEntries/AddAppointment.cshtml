@@ -2,18 +2,22 @@
 @{
     ViewBag.Title = "Book an Appointment";
 }
-<h3 class="text-center">Register new doctor.</h3>
+<h3 class="text-center">Book an appointment.</h3>
 
 <form asp-action="AddAppointment" method="post">
     <div class="form-group">
         <label asp-for="Date">Date:</label>
         <input asp-for="Date" class="form-control" />
+        <span asp-validation-for="Date" class="text-danger"></span>
+
     </div>
 
     <div class="form-group">
         <label asp-for="PetId">Pet Id:</label>
         <input asp-for="PetId" class="form-control" />
+        <span asp-validation-for="PetId" class="text-danger"></span>
+
     </div>
     
-    <button type="submit" class="btn btn-outline-secondary">Register Owner</button>
+    <button type="submit" class="btn btn-outline-secondary">Book</button>
 </form>

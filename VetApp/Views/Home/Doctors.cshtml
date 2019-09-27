@@ -1,12 +1,14 @@
 ﻿@model List<Doctor>
 @{
     ViewData["Title"] = "Doctors";
+    ViewData["DoctorsActive"] = "active";
 }
 
 <h2>Doctors</h2>
 @if (Model.Count == 0)
 {
-    <h4>Without doctors in the Database. <a asp-controller="NewEntries" asp-action=""></a>Add a new one.</h4>
+    <h4>Without doctors in the Database. </h4>
+    <a asp-controller="NewEntries" asp-action="AddDoctor">Add a new one.</a>
 }
 else
 {

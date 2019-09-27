@@ -1,34 +1,36 @@
 ﻿@model List<Owner>
 @{
     ViewData["Title"] = "Owners";
+    ViewData["OwnersActive"] = "active";
 }
 
 <h2>Owners</h2>
 @if (Model.Count == 0)
 {
     <h4>Without owners in the Database.</h4>
+    <a asp-controller="NewEntries" asp-action="AddOwner">Add a new one.</a>
 }
 else
 {
     <table class="table">
         <thead>
-        <tr>
-            <th scope="col">Id</th>
-            <th scope="col">Name</th>
-            <th scope="col">Birthday</th>
-            <th scope="col">Contact</th>
-        </tr>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Birthday</th>
+                <th scope="col">Contact</th>
+            </tr>
         </thead>
         <tbody>
-        @foreach (var owner in Model)
-        {
-            <tr>
-                <th scope="row">@owner.Id</th>
-                <td>@owner.Name</td>
-                <td>@owner.Birthday.Day/@owner.Birthday.Month/@owner.Birthday.Year</td>
-                <td>@owner.Contact</td>
-            </tr>
-        }
+            @foreach (var owner in Model)
+            {
+                <tr>
+                    <th scope="row">@owner.Id</th>
+                    <td>@owner.Name</td>
+                    <td>@owner.Birthday.Day/@owner.Birthday.Month/@owner.Birthday.Year</td>
+                    <td>@owner.Contact</td>
+                </tr>
+            }
         </tbody>
     </table>
 

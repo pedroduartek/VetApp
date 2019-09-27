@@ -1,35 +1,37 @@
 ﻿@model List<Appointment>
 @{
     ViewData["Title"] = "Appointments";
+    ViewData["AppointmentsActive"] = "active";
 }
 
 <h2>Appointments</h2>
 @if (Model.Count == 0)
 {
     <h4>Without appointments in the Database.</h4>
+    <a asp-controller="NewEntries" asp-action="AddAppointment">Add a new one.</a>
 }
 else
 {
     <table class="table">
         <thead>
-        <tr>
-            <th scope="col">Id</th>
-            <th scope="col">Pet</th>
-            <th scope="col">Owner</th>
-            <th scope="col">Date</th>
-            <th scope="col">Contact</th>
-        </tr>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Pet</th>
+                <th scope="col">Owner</th>
+                <th scope="col">Date</th>
+                <th scope="col">Contact</th>
+            </tr>
         </thead>
         <tbody>
-        @foreach (var appointment in Model)
-        {
-            <tr>
-                <th scope="row">@appointment.Id</th>
-                <td>@appointment.Pet.Name</td>
-                <td>@appointment.Pet.Owner.Name</td>
-                <td>@appointment.Date.Day/@appointment.Date.Month/@appointment.Date.Year @appointment.Date.Hour:@appointment.Date.Minute</td>
-            </tr>
-        }
+            @foreach (var appointment in Model)
+            {
+                <tr>
+                    <th scope="row">@appointment.Id</th>
+                    <td>@appointment.Pet.Name</td>
+                    <td>@appointment.Pet.Owner.Name</td>
+                    <td>@appointment.Date.Day/@appointment.Date.Month/@appointment.Date.Year @appointment.Date.Hour:@appointment.Date.Minute</td>
+                </tr>
+            }
         </tbody>
     </table>
 

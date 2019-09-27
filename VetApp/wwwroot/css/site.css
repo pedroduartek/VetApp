@@ -6,7 +6,7 @@
 }
 body {
     padding-bottom: 20px;
-    font-family: Arial;
+    font-family: "Consolas";
 }
 
 
@@ -28,8 +28,22 @@ body {
 
 .card:hover { box-shadow: 0 16px 32px 0 rgba(0, 0, 0, 0.2); }
 
-.navbar-brand { font-size: 1.5rem; }
+.navbar-brand { 
+    font-size: 2rem;
+    margin-right: 7%;
+    margin-left: 30px
+}
 
 .form-control {
     width: 50%;
+}
+
+.nav-item {
+    margin-left: 3rem;
+    margin-right: 3rem;
+}
+
+.navbar-expand-lg .navbar-nav .nav-link {
+    padding-left: 30px;
+    padding-right: 29px;
 }

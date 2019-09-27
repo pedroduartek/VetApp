@@ -14,17 +14,5 @@ namespace VetApp.Models
         public Doctor Doctor { get; set; }
         public int DoctorId { get; set; }
 
-        public Appointment()
-        {
-            var context = new VetAppDbContext();
-
-            var petType = Pet.PetType.ToString();
-
-            var doctor = context.Doctors.Where(d => d.Specialty.ToString() == petType).ToList();
-
-            var rnd = new Random();
-
-            DoctorId = doctor[rnd.Next(0,doctor.Count)].LicenseNumber;
-        }
     }
 }

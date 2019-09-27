@@ -47,3 +47,8 @@ body {
     padding-left: 30px;
     padding-right: 29px;
 }
+
+.table {
+    margin-bottom: 4rem;
+    text-align: center;
+}

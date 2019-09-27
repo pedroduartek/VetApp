@@ -18,9 +18,10 @@
     <tbody>
         <tr>
             <th scope="row">@Model.Id</th>
-            <td>@Model.Pet.Name</td>
-            <td>@Model.Pet.Owner.Name</td>
+            <td><a asp-action="PetDetails" asp-route-id="@Model.Pet.Id">@Model.Pet.Name</a></td>
+            <td><a asp-action="OwnerDetails" asp-route-id="@Model.Pet.Owner.Id">@Model.Pet.Owner.Name</a></td>
             <td>@Model.Date.Day/@Model.Date.Month/@Model.Date.Year @Model.Date.Hour:@Model.Date.Minute</td>
+            <td><a asp-action="DoctorDetails" asp-route-id="@Model.DoctorId">@Model.Doctor.Name</a></td>
         </tr>
     </tbody>
 </table>

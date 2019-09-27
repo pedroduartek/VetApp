@@ -46,7 +46,8 @@ namespace VetApp.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("Birthday");
+                    b.Property<DateTime>("Birthday")
+                        .HasColumnType("Date");
 
                     b.Property<string>("Contact")
                         .IsRequired();
@@ -112,7 +113,7 @@ namespace VetApp.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("VetApp.Models.Pet", "Pet")
-                        .WithMany()
+                        .WithMany("Appointments")
                         .HasForeignKey("PetId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

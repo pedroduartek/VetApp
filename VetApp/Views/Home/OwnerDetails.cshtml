@@ -13,14 +13,50 @@
         </tr>
     </thead>
     <tbody>
-            <tr>
-                <th scope="row">@Model.Id</th>
-                <td>@Model.Name</td>
-                <td>@Model.Birthday.Day/@Model.Birthday.Month/@Model.Birthday.Year</td>
-                <td>@Model.Contact</td>
-            </tr>
+        <tr>
+            <th scope="row">@Model.Id</th>
+            <td>@Model.Name</td>
+            <td>@Model.Birthday.Day/@Model.Birthday.Month/@Model.Birthday.Year</td>
+            <td>@Model.Contact</td>
+        </tr>
     </tbody>
 </table>
+
+
+@if (Model.Pets.Count == 0)
+{
+    <h3>Owner without pets.</h3>
+    <p><a asp-action="AddPet" asp-controller="NewEntries">Register one.</a></p>
+}
+else
+{
+    <h3>Pets from this owner:</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Birthday</th>
+                <th scope="col">Appointments</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var pet in Model.Pets)
+            {
+                <tr>
+                    <th scope="row">@pet.Id</th>
+                    <td><a asp-action="PetDetails" asp-route-id="@pet.Id">@pet.Name</a></td>
+                    <td>@pet.Birthday.Day/@pet.Birthday.Month/@pet.Birthday.Year</td>
+                    <td>@pet.Appointments.Count</td>
+                </tr>
+            }
+
+
+        </tbody>
+    </table>
+}
+
+
 
 
 

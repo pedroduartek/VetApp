@@ -7,6 +7,12 @@
   <ItemGroup>
     <Compile Remove="Migrations\20190925140734_Correction.cs" />
     <Compile Remove="Migrations\20190925140734_Correction.Designer.cs" />
+    <Compile Remove="Migrations\20190927171757_RelactionAppointmentPet.cs" />
+    <Compile Remove="Migrations\20190927171757_RelactionAppointmentPet.Designer.cs" />
+    <Compile Remove="Migrations\20190927172112_RelactionAppointmentPet.cs" />
+    <Compile Remove="Migrations\20190927172112_RelactionAppointmentPet.Designer.cs" />
+    <Compile Remove="Migrations\20190927172238_RelationshipAppointmentPets.cs" />
+    <Compile Remove="Migrations\20190927172238_RelationshipAppointmentPets.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

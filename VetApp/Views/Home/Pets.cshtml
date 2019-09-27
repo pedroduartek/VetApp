@@ -17,7 +17,6 @@ else
             <tr>
                 <th scope="col">Id</th>
                 <th scope="col">Name</th>
-                <th scope="col">Birthday</th>
                 <th scope="col">Owner</th>
             </tr>
         </thead>
@@ -29,7 +28,6 @@ else
 
                     <th scope="row">@pet.Id</th>
                     <td><a asp-action="PetDetails" asp-route-id="@pet.Id">@pet.Name</a></td>
-                    <td>@pet.Birthday.Day/@pet.Birthday.Month/@pet.Birthday.Year</td>
                     <td>@pet.Owner.Name</td>
 
                 </tr>

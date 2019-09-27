@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace VetApp.Models
 {
@@ -10,6 +11,7 @@ namespace VetApp.Models
         public Owner Owner { get; set; }
         public int OwnerId { get; set; }
         public Type PetType { get; set; }
+        public ICollection<Appointment> Appointments { get; set; }
 
         public enum Type
         {

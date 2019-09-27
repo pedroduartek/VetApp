@@ -38,6 +38,7 @@ namespace VetApp.Models
                 a.Property(an => an.Birthday)
                     .HasColumnType("Date")
                     .IsRequired();
+                a.HasMany(p => p.Appointments).WithOne(ap => ap.Pet);
             });
 
             modelBuilder.Entity<Appointment>(a =>
@@ -52,7 +53,7 @@ namespace VetApp.Models
             {
                 d.HasKey(dc => dc.LicenseNumber);
                 d.Property(dc => dc.Name).IsRequired();
-                d.Property(dc => dc.Birthday).IsRequired();
+                d.Property(dc => dc.Birthday).HasColumnType("Date").IsRequired();
                 d.Property(dc => dc.Specialty).IsRequired();
                 d.Property(dc => dc.Contact).IsRequired();
             });

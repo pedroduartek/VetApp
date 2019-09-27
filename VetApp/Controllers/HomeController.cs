@@ -21,15 +21,20 @@ namespace VetApp.Controllers
 
         public IActionResult Pets()
         {
-            var pets = _context.Pets.Include(p => p.Owner).OrderBy(p => p.Id).ToList();
+            var pets = _context.Pets
+                .Include(p => p.Owner)
+                .OrderBy(p => p.Id).ToList();
 
             return View(pets);
         }
 
         public IActionResult PetDetails(int id)
         {
-            var pet = _context.Pets.Find(id);
-
+            var pet = _context.Pets
+                .Include(p => p.Owner)
+                .Include(p => p.Appointments)
+                .ToList().Find(p => p.Id == id);
+            
             return View(pet);
         }
 
@@ -43,7 +48,11 @@ namespace VetApp.Controllers
 
         public IActionResult OwnerDetails(int id)
         {
-            var owner = _context.Owners.Find(id);
+            var owner = _context.Owners
+                .Include(o => o.Pets)
+                .ThenInclude(p => p.Appointments)
+                .ToList().Find(o => o.Id == id);
+            
 
             return View(owner);
         }
@@ -51,14 +60,20 @@ namespace VetApp.Controllers
 
         public IActionResult Appointments()
         {
-            var appointments = _context.Appointments.Include(a => a.Pet).ThenInclude(p => p.Owner).OrderBy(a => a.Date).ToList();
+            var appointments = _context.Appointments
+                .Include(a => a.Pet)
+                .ThenInclude(p => p.Owner)
+                .OrderBy(a => a.Date).ToList();
 
             return View(appointments);
         }
 
         public IActionResult AppointmentDetails(int id)
         {
-            var appointment = _context.Appointments.Find(id);
+            var appointment = _context.Appointments
+                .Include(a => a.Doctor)
+                .Include(a => a.Pet)
+                .ThenInclude(p => p.Owner).ToList().Find(a => a.Id == id);
 
             return View(appointment);
         }

@@ -5,24 +5,55 @@
 }
 
 
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Type</th>
+            <th scope="col">Birthday</th>
+            <th scope="col">Owner</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">@Model.Id</th>
+            <td>@Model.Name</td>
+            <td>@Model.PetType</td>
+            <td>@Model.Birthday.Day/@Model.Birthday.Month/@Model.Birthday.Year</td>
+            <td><a asp-action="OwnerDetails" asp-route-id="@Model.Owner.Id">@Model.Owner.Name</a></td>
+        </tr>
+    </tbody>
+</table>
+
+@if (Model.Appointments.Count == 0)
+{
+    <h3>Without appointments.</h3>
+    <p><a asp-action="AddAppointment" asp-controller="NewEntries">Book one.</a></p>
+}
+else
+{
     <table class="table">
         <thead>
         <tr>
             <th scope="col">Id</th>
-            <th scope="col">Name</th>
-            <th scope="col">Birthday</th>
-            <th scope="col">Owner</th>
+            <th scope="col">Doctor Id</th>
+            <th scope="col">Date</th>
         </tr>
         </thead>
         <tbody>
+        @foreach (var appointment in Model.Appointments)
+        {
             <tr>
-                <th scope="row">@Model.Id</th>
-                <td>@Model.Name</td>
-                <td>@Model.Birthday.Day/@Model.Birthday.Month/@Model.Birthday.Year</td>
-                <td>@Model.OwnerId</td>
+                <th scope="row">@appointment.Id</th>
+                <td><a asp-action="DoctorDetails" asp-route-id="@appointment.DoctorId">@appointment.DoctorId</a></td>
+                <td>@appointment.Date.Day/@appointment.Date.Month/@appointment.Date.Year</td>
             </tr>
+        }
+
         </tbody>
     </table>
+}
 
 
 

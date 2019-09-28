@@ -41,7 +41,7 @@ namespace VetApp.Migrations
                         "FK_Pets_Owners_OwnerId",
                         x => x.OwnerId,
                         "Owners",
-                        "Id",
+                        "LicenseNumber",
                         onDelete: ReferentialAction.Cascade);
                 });
 

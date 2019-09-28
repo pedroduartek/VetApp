@@ -1,4 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
 namespace VetApp.Models
 {
@@ -49,14 +52,20 @@ namespace VetApp.Models
                 
             });
 
+            
             modelBuilder.Entity<Doctor>(d =>
             {
                 d.HasKey(dc => dc.LicenseNumber);
+                d.Property(dc => dc.LicenseNumber)
+                    .ValueGeneratedNever()
+                    .IsRequired();
                 d.Property(dc => dc.Name).IsRequired();
                 d.Property(dc => dc.Birthday).HasColumnType("Date").IsRequired();
                 d.Property(dc => dc.Specialty).IsRequired();
                 d.Property(dc => dc.Contact).IsRequired();
+                d.HasMany(dc => dc.Appointments).WithOne(a => a.Doctor);
             });
+            
         }
     }
 }

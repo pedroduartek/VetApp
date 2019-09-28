@@ -1,4 +1,4 @@
-﻿@model Appointment
+﻿@model VetApp.Controllers.AddAppointmentViewModel
 @{
     ViewBag.Title = "Book an Appointment";
 }
@@ -6,18 +6,34 @@
 
 <form asp-action="AddAppointment" method="post">
     <div class="form-group">
-        <label asp-for="Date">Date:</label>
-        <input asp-for="Date" class="form-control" />
-        <span asp-validation-for="Date" class="text-danger"></span>
+        <label asp-for="@Model.Appointment.Date">Date:</label>
+        <input asp-for="@Model.Appointment.Date" class="form-control" />
+        <span asp-validation-for="@Model.Appointment.Date" class="text-danger"></span>
 
     </div>
 
     <div class="form-group">
-        <label asp-for="PetId">Pet Id:</label>
-        <input asp-for="PetId" class="form-control"/>
-        <span asp-validation-for="PetId" class="text-danger"></span>
+        <select asp-for="@Model.Appointment.PetId">
+            <option>Select a pet</option>
 
+            @foreach (var pet in Model.Pets)
+            {
+                <option value="@pet.Id">@pet.Id - @pet.Name (@pet.PetType)</option>
+            }
+        </select>
+        <span asp-validation-for="@Model.Appointment.PetId" class="text-danger"></span>
     </div>
-    
+
+    <div class="form-group">
+        <select asp-for="@Model.Appointment.DoctorId">
+            <option>Select a doctor</option>
+            @foreach (var doctor in Model.Doctors)
+            {
+                <option value="@doctor.LicenseNumber">@doctor.Name (@doctor.Specialty)</option>
+            }
+        </select>
+        <span asp-validation-for="@Model.Appointment.DoctorId" class="text-danger"></span>
+    </div>
+
     <button type="submit" class="btn btn-outline-secondary">Book</button>
 </form>

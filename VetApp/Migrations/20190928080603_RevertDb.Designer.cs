@@ -10,8 +10,8 @@ using VetApp.Models;
 namespace VetApp.Migrations
 {
     [DbContext(typeof(VetAppDbContext))]
-    [Migration("20190925194423_teste1")]
-    partial class teste1
+    [Migration("20190928080603_RevertDb")]
+    partial class RevertDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,15 +21,60 @@ namespace VetApp.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("VetApp.Models.Appointment", b =>
+                {
+                    b.Property<int>("LicenseNumber")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("Date");
+
+                    b.Property<int>("DoctorId");
+
+                    b.Property<int>("PetId");
+
+                    b.HasKey("LicenseNumber");
+
+                    b.HasIndex("DoctorId");
+
+                    b.HasIndex("PetId");
+
+                    b.ToTable("Appointments");
+                });
+
+            modelBuilder.Entity("VetApp.Models.Doctor", b =>
+                {
+                    b.Property<int>("DoctorId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("Birthday")
+                        .HasColumnType("Date");
+
+                    b.Property<string>("Contact")
+                        .IsRequired();
+
+                    b.Property<string>("Name")
+                        .IsRequired();
+
+                    b.Property<int>("Specialty");
+
+                    b.HasKey("DoctorId");
+
+                    b.ToTable("Doctors");
+                });
+
             modelBuilder.Entity("VetApp.Models.Owner", b =>
                 {
                     b.Property<int>("LicenseNumber")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("Birthday");
+                    b.Property<DateTime>("Birthday")
+                        .HasColumnType("Date");
 
-                    b.Property<int>("Contact");
+                    b.Property<string>("Contact")
+                        .IsRequired();
 
                     b.Property<string>("Name")
                         .IsRequired();
@@ -45,7 +90,8 @@ namespace VetApp.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("Birthday");
+                    b.Property<DateTime>("Birthday")
+                        .HasColumnType("Date");
 
                     b.Property<string>("Name")
                         .IsRequired();
@@ -59,6 +105,19 @@ namespace VetApp.Migrations
                     b.HasIndex("OwnerId");
 
                     b.ToTable("Pets");
+                });
+
+            modelBuilder.Entity("VetApp.Models.Appointment", b =>
+                {
+                    b.HasOne("VetApp.Models.Doctor", "Doctor")
+                        .WithMany()
+                        .HasForeignKey("DoctorId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("VetApp.Models.Pet", "Pet")
+                        .WithMany("Appointments")
+                        .HasForeignKey("PetId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("VetApp.Models.Pet", b =>

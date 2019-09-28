@@ -25,7 +25,7 @@ namespace VetApp.Migrations
                         name: "FK_Appointments_Pets_PetId",
                         column: x => x.PetId,
                         principalTable: "Pets",
-                        principalColumn: "Id",
+                        principalColumn: "LicenseNumber",
                         onDelete: ReferentialAction.Cascade);
                 });
 

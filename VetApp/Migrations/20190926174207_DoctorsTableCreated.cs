@@ -18,8 +18,7 @@ namespace VetApp.Migrations
                 name: "Doctors",
                 columns: table => new
                 {
-                    LicenseNumber = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    LicenseNumber = table.Column<int>(nullable: false),
                     Name = table.Column<string>(nullable: false),
                     Specialty = table.Column<int>(nullable: false),
                     Birthday = table.Column<DateTime>(nullable: false),

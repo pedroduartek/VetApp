@@ -10,8 +10,8 @@ using VetApp.Models;
 namespace VetApp.Migrations
 {
     [DbContext(typeof(VetAppDbContext))]
-    [Migration("20190926152223_AppointmentsTableCreated")]
-    partial class AppointmentsTableCreated
+    [Migration("20190928084115_test2")]
+    partial class test2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,26 +23,48 @@ namespace VetApp.Migrations
 
             modelBuilder.Entity("VetApp.Models.Appointment", b =>
                 {
-                    b.Property<int>("LicenseNumber")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("Date");
 
+                    b.Property<int>("DoctorId");
+
                     b.Property<int>("PetId");
 
-                    b.Property<float>("Price");
+                    b.HasKey("Id");
 
-                    b.HasKey("LicenseNumber");
+                    b.HasIndex("DoctorId");
 
                     b.HasIndex("PetId");
 
                     b.ToTable("Appointments");
                 });
 
+            modelBuilder.Entity("VetApp.Models.Doctor", b =>
+                {
+                    b.Property<int>("LicenseNumber");
+
+                    b.Property<DateTime>("Birthday")
+                        .HasColumnType("Date");
+
+                    b.Property<string>("Contact")
+                        .IsRequired();
+
+                    b.Property<string>("Name")
+                        .IsRequired();
+
+                    b.Property<int>("Specialty");
+
+                    b.HasKey("LicenseNumber");
+
+                    b.ToTable("Doctors");
+                });
+
             modelBuilder.Entity("VetApp.Models.Owner", b =>
                 {
-                    b.Property<int>("LicenseNumber")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -55,14 +77,14 @@ namespace VetApp.Migrations
                     b.Property<string>("Name")
                         .IsRequired();
 
-                    b.HasKey("LicenseNumber");
+                    b.HasKey("Id");
 
                     b.ToTable("Owners");
                 });
 
             modelBuilder.Entity("VetApp.Models.Pet", b =>
                 {
-                    b.Property<int>("LicenseNumber")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -76,7 +98,7 @@ namespace VetApp.Migrations
 
                     b.Property<int>("PetType");
 
-                    b.HasKey("LicenseNumber");
+                    b.HasKey("Id");
 
                     b.HasIndex("OwnerId");
 
@@ -85,8 +107,13 @@ namespace VetApp.Migrations
 
             modelBuilder.Entity("VetApp.Models.Appointment", b =>
                 {
+                    b.HasOne("VetApp.Models.Doctor", "Doctor")
+                        .WithMany("Appointments")
+                        .HasForeignKey("DoctorId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.HasOne("VetApp.Models.Pet", "Pet")
-                        .WithMany()
+                        .WithMany("Appointments")
                         .HasForeignKey("PetId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

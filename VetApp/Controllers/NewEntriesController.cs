@@ -52,38 +52,35 @@ namespace VetApp.Controllers
         [HttpPost]
         public IActionResult AddOwner(Owner newOwner)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Owners.Add(newOwner);
-                _context.SaveChanges();
-                return View("AddPet");
-            }
-            else
-            {
-                return View();
-            }
+            if (!ModelState.IsValid) return View();
+
+            _context.Owners.Add(newOwner);
+            _context.SaveChanges();
+            return View("AddPet");
 
         }
 
 
         public IActionResult AddAppointment()
         {
-            return View();
+            var viewModel = new AddAppointmentViewModel
+            {
+                Doctors = _context.Doctors.ToList(), 
+                Pets = _context.Pets.ToList()
+            };
+
+
+            return View(viewModel);
         }
 
         [HttpPost]
         public IActionResult AddAppointment(Appointment newAppointment)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Appointments.Add(newAppointment);
-                _context.SaveChanges();
-                return View("AppointmentAdded", newAppointment);
-            }
-            else
-            {
-                return View();
-            }
+            if (!ModelState.IsValid) return View();
+
+            _context.Appointments.Add(newAppointment);
+            _context.SaveChanges();
+            return View("AppointmentAdded", newAppointment);
 
         }
 
@@ -96,16 +93,12 @@ namespace VetApp.Controllers
         [HttpPost]
         public IActionResult AddDoctor(Doctor newDoctor)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Doctors.Add(newDoctor);
-                _context.SaveChanges();
-                return View("DoctorAdded", newDoctor);
-            }
-            else
-            {
-                return View();
-            }
+            if (!ModelState.IsValid) return View();
+
+            _context.Doctors.Add(newDoctor);
+            _context.SaveChanges();
+
+            return View("DoctorAdded", newDoctor);
 
         }
 

@@ -12,6 +12,7 @@ namespace VetApp.Models
         public SpecialtyType Specialty { get; set; }
         public DateTime Birthday { get; set; }
         public string Contact { get; set; }
+        public ICollection<Appointment> Appointments { get; set; }
 
 
         public enum SpecialtyType

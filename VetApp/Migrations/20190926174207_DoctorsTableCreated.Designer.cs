@@ -23,7 +23,7 @@ namespace VetApp.Migrations
 
             modelBuilder.Entity("VetApp.Models.Appointment", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("LicenseNumber")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -33,7 +33,7 @@ namespace VetApp.Migrations
 
                     b.Property<int>("PetId");
 
-                    b.HasKey("Id");
+                    b.HasKey("LicenseNumber");
 
                     b.HasIndex("DoctorId");
 
@@ -65,7 +65,7 @@ namespace VetApp.Migrations
 
             modelBuilder.Entity("VetApp.Models.Owner", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("LicenseNumber")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -78,14 +78,14 @@ namespace VetApp.Migrations
                     b.Property<string>("Name")
                         .IsRequired();
 
-                    b.HasKey("Id");
+                    b.HasKey("LicenseNumber");
 
                     b.ToTable("Owners");
                 });
 
             modelBuilder.Entity("VetApp.Models.Pet", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("LicenseNumber")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -99,7 +99,7 @@ namespace VetApp.Migrations
 
                     b.Property<int>("PetType");
 
-                    b.HasKey("Id");
+                    b.HasKey("LicenseNumber");
 
                     b.HasIndex("OwnerId");
 

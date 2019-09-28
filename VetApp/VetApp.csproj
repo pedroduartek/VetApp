@@ -13,6 +13,24 @@
     <Compile Remove="Migrations\20190927172112_RelactionAppointmentPet.Designer.cs" />
     <Compile Remove="Migrations\20190927172238_RelationshipAppointmentPets.cs" />
     <Compile Remove="Migrations\20190927172238_RelationshipAppointmentPets.Designer.cs" />
+    <Compile Remove="Migrations\20190928073848_Test1.cs" />
+    <Compile Remove="Migrations\20190928073848_Test1.Designer.cs" />
+    <Compile Remove="Migrations\20190928081107_TestMigration.cs" />
+    <Compile Remove="Migrations\20190928081107_TestMigration.Designer.cs" />
+    <Compile Remove="Migrations\20190928081539_DoctorAppointmentRelation.cs" />
+    <Compile Remove="Migrations\20190928081539_DoctorAppointmentRelation.Designer.cs" />
+    <Compile Remove="Migrations\20190928083559_test2.cs" />
+    <Compile Remove="Migrations\20190928083559_test2.Designer.cs" />
+    <Compile Remove="Migrations\20190928083702_test2.cs" />
+    <Compile Remove="Migrations\20190928083702_test2.Designer.cs" />
+    <Compile Remove="Migrations\20190928084715_test22.cs" />
+    <Compile Remove="Migrations\20190928084715_test22.Designer.cs" />
+    <Compile Remove="Migrations\20190928085014_LetsSee.cs" />
+    <Compile Remove="Migrations\20190928085014_LetsSee.Designer.cs" />
+    <Compile Remove="Migrations\20190928085034_LetsSee.cs" />
+    <Compile Remove="Migrations\20190928085034_LetsSee.Designer.cs" />
+    <Compile Remove="Migrations\20190928090514_LetsSee.cs" />
+    <Compile Remove="Migrations\20190928090514_LetsSee.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

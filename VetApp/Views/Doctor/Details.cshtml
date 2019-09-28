@@ -1,0 +1,63 @@
+﻿@model Doctor
+@{
+    ViewData["Title"] = "Doctors";
+    ViewData["DoctorsActive"] = "active";
+}
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">License Number</th>
+            <th scope="col">Name</th>
+            <th scope="col">Birthday</th>
+            <th scope="col">Contact</th>
+            <th scope="col">Specialty</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">@Model.LicenseNumber</th>
+            <td>@Model.Name</td>
+            <td>@Model.Birthday.Day/@Model.Birthday.Month/@Model.Birthday.Year</td>
+            <td>@Model.Contact</td>
+            <td>@Model.Specialty</td>
+        </tr>
+    </tbody>
+</table>
+
+@if (Model.Appointments.Count == 0)
+{
+    <h3>Without appointments.</h3>
+}
+else
+{
+    <h3>Appointments:</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Date</th>
+                <th scope="col">Pet</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var appointment in Model.Appointments)
+            {
+                <tr>
+                    <th scope="row">@appointment.Id</th>
+                    <td>@appointment.Date.Day/@appointment.Date.Month/@appointment.Date.Year</td>
+                    <td><a asp-action="Details" asp-controller="Pet" asp-route-id="@appointment.PetId">@appointment.Pet.Id @appointment.Pet.Name</a></td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+}
+
+
+
+
+
+
+

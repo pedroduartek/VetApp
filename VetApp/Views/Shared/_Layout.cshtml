@@ -19,28 +19,31 @@
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" asp-action="Index" asp-controller="Home">VetApp</a>
+    <a class="navbar-brand" asp-action="Owners" asp-controller="Home">VetApp</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
     <div class="collapse navbar-collapse">
-        <ul class="navbar-nav nav-tabs">
+        <ul class="navbar-nav mr-auto">
             
             <li class="nav-item @ViewData["HomeActive"]">
-                <a class="nav-link @ViewData["HomeActive"]" asp-action="Index" asp-controller="Home">Home</a>
+                <a class="nav-link @ViewData["HomeActive"]" asp-action="Owners" asp-controller="Home">Home</a>
             </li>
 
             <li class="nav-item @ViewData["PetsActive"]">
-                <a class="nav-link @ViewData["PetsActive"]" asp-action="Pets" asp-controller="Home">Pets</a>
+                <a class="nav-link @ViewData["PetsActive"]" asp-action="Index" asp-controller="Pet">Pets</a>
             </li>
 
             <li class="nav-item @ViewData["OwnersActive"]">
-                <a class="nav-link @ViewData["OwnersActive"]" asp-action="Owners" asp-controller="Home">Owners</a>
+                <a class="nav-link @ViewData["OwnersActive"]" asp-action="Index" asp-controller="Owner">Owners</a>
             </li>
 
             <li class="nav-item @ViewData["AppointmentsActive"]">
-                <a class="nav-link @ViewData["AppointmentsActive"]" asp-action="Appointments" asp-controller="Home">Appointments</a>
+                <a class="nav-link @ViewData["AppointmentsActive"]" asp-action="Index" asp-controller="Appointment">Appointments</a>
             </li>
             <li class="nav-item @ViewData["DoctorsActive"]">
-                <a class="nav-link @ViewData["DoctorsActive"]" asp-action="Doctors" asp-controller="Home">Doctors</a>
+                <a class="nav-link @ViewData["DoctorsActive"]" asp-action="Index" asp-controller="Doctor">Doctors</a>
             </li>
 
         </ul>

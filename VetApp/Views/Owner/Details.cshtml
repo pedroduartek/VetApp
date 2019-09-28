@@ -1,6 +1,6 @@
 ﻿@model Owner
 @{
-    ViewData["Title"] = "Owners";
+    ViewData["Title"] = "Index";
     ViewData["OwnersActive"] = "active";
 }
 <table class="table">
@@ -26,7 +26,7 @@
 @if (Model.Pets.Count == 0)
 {
     <h3>Owner without pets.</h3>
-    <p><a asp-action="AddPet" asp-controller="NewEntries">Register one.</a></p>
+    <p><a asp-action="Create" asp-controller="Pet">Register one.</a></p>
 }
 else
 {
@@ -37,7 +37,7 @@ else
                 <th scope="col">LicenseNumber</th>
                 <th scope="col">Name</th>
                 <th scope="col">Birthday</th>
-                <th scope="col">Appointments</th>
+                <th scope="col">Index</th>
             </tr>
         </thead>
         <tbody>
@@ -45,7 +45,7 @@ else
             {
                 <tr>
                     <th scope="row">@pet.Id</th>
-                    <td><a asp-action="PetDetails" asp-route-id="@pet.Id">@pet.Name</a></td>
+                    <td><a asp-action="Details"  asp-controller="Pet" asp-route-id="@pet.Id">@pet.Name</a></td>
                     <td>@pet.Birthday.Day/@pet.Birthday.Month/@pet.Birthday.Year</td>
                     <td>@pet.Appointments.Count</td>
                 </tr>

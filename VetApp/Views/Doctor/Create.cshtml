@@ -1,10 +1,11 @@
 ﻿@model Doctor
 @{
-    ViewBag.Title = "Register Doctor";
+    ViewData["Title"] = "Doctors";
+    ViewData["DoctorsActive"] = "active";
 }
 <h3 class="text-center">Register new doctor.</h3>
 
-<form asp-action="AddDoctor" method="post">
+<form asp-action="Create" method="post">
 
     <div class="form-group">
         <label asp-for="LicenseNumber">License Nº:</label>

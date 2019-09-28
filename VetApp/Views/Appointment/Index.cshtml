@@ -1,10 +1,10 @@
 ﻿@model List<Appointment>
 @{
-    ViewData["Title"] = "Appointments";
+    ViewData["Title"] = "Index";
     ViewData["AppointmentsActive"] = "active";
 }
 
-<h2>Appointments</h2>
+<h2>Index</h2>
 @if (Model.Count == 0)
 {
     <h4>Without appointments in the Database.</h4>
@@ -24,7 +24,7 @@ else
             @foreach (var appointment in Model)
             {
                 <tr>
-                    <th scope="row"><a asp-action="PetDetails" asp-route-id="@appointment.Id">@appointment.Id</a></th>
+                    <th scope="row"><a asp-action="AppointmentDetails" asp-route-id="@appointment.Id">@appointment.Id</a></th>
                     <td>@appointment.Pet.Name</td>
                     <td>@appointment.Date.Day/@appointment.Date.Month/@appointment.Date.Year @appointment.Date.Hour:@appointment.Date.Minute</td>
                 </tr>

@@ -1,6 +1,7 @@
 ﻿@model Doctor
 @{
-    ViewData["Title"] = "Doctor Added";
+    ViewData["Title"] = "Doctors";
+    ViewData["DoctorsActive"] = "active";
 }
 
 <h3>Doctor was added.</h3>
@@ -24,5 +25,6 @@
     </tbody>
 </table>
 
-<a asp-action="Index" asp-controller="Home">Go Back to Home</a>
+<a asp-action="Create" asp-controller="Doctor">Add another one.</a>
+<a asp-action="Index" asp-controller="Doctor">List of Doctors</a>
 

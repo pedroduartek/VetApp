@@ -108,12 +108,12 @@ namespace VetApp.Migrations
             modelBuilder.Entity("VetApp.Models.Appointment", b =>
                 {
                     b.HasOne("VetApp.Models.Doctor", "Doctor")
-                        .WithMany("Appointments")
+                        .WithMany("Owners")
                         .HasForeignKey("DoctorId")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("VetApp.Models.Pet", "Pet")
-                        .WithMany("Appointments")
+                        .WithMany("Owners")
                         .HasForeignKey("PetId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

@@ -3,20 +3,22 @@
     ViewData["HomeActive"] = "active";ViewData["HomeActive"] = "active";
 }
 
-<a asp-action="Index" asp-controller="NewEntries">
-    <div class="card d-inline-flex">
-        <img src="images/AddNewPet.png" alt="AddNewPet"/>
-    </div>
-</a>
+    <div class="container" id="menu">
+        <a asp-action="OwnerRegistered" asp-controller="Pet">
+            <div class="card d-inline-flex">
+                <img class="img-fluid" src="images/AddNewPet.png" alt="AddNewPet" />
+            </div>
+        </a>
 
-<a asp-action="AddAppointment" asp-controller="NewEntries">
-    <div class="card d-inline-flex">
-        <img src="images/AddAnAppointment.png" alt="AddNewAppointment"/>
-    </div>
-</a>
+        <a asp-action="AddAppointment" asp-controller="Appointment">
+            <div class="card d-inline-flex">
+                <img class="img-fluid" src="images/AddAnAppointment.png" alt="AddNewAppointment" />
+            </div>
+        </a>
 
-<a asp-action="AddDoctor" asp-controller="NewEntries">
-    <div class="card d-inline-flex">
-        <img src="images/AddNewDoctor.png" alt="AddNewDoctor"/>
+        <a asp-action="Create" asp-controller="Doctor">
+            <div class="card d-inline-flex">
+                <img class="img-fluid" src="images/AddNewDoctor.png" alt="AddNewDoctor" />
+            </div>
+        </a>
     </div>
-</a>

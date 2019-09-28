@@ -1,6 +1,6 @@
 ﻿@model Appointment
 @{
-    ViewData["Title"] = "Appointments";
+    ViewData["Title"] = "Index";
     ViewData["AppointmentsActive"] = "active";
 }
 
@@ -12,16 +12,16 @@
             <th scope="col">Pet</th>
             <th scope="col">Owner</th>
             <th scope="col">Date</th>
-            <th scope="col">Contact</th>
+            <th scope="col">Doctor</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <th scope="row">@Model.Id</th>
-            <td><a asp-action="PetDetails" asp-route-id="@Model.Pet.Id">@Model.Pet.Name</a></td>
-            <td><a asp-action="OwnerDetails" asp-route-id="@Model.Pet.Owner.Id">@Model.Pet.Owner.Name</a></td>
+            <td><a asp-action="Details" asp-controller="Pet" asp-route-id="@Model.Pet.Id">@Model.Pet.Name</a></td>
+            <td><a asp-action="Details" asp-controller="Owner" asp-route-id="@Model.Pet.Owner.Id">@Model.Pet.Owner.Name</a></td>
             <td>@Model.Date.Day/@Model.Date.Month/@Model.Date.Year @Model.Date.Hour:@Model.Date.Minute</td>
-            <td><a asp-action="DoctorDetails" asp-route-id="@Model.DoctorId">@Model.Doctor.Name</a></td>
+            <td><a asp-action="Details" asp-controller="Doctor" asp-route-id="@Model.DoctorId">@Model.Doctor.Name</a></td>
         </tr>
     </tbody>
 </table>

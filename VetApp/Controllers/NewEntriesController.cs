@@ -74,13 +74,13 @@ namespace VetApp.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddAppointment(Appointment newAppointment)
+        public IActionResult AddAppointment(AddAppointmentViewModel viewModel)
         {
             if (!ModelState.IsValid) return View();
 
-            _context.Appointments.Add(newAppointment);
+            _context.Appointments.Add(viewModel.Appointment);
             _context.SaveChanges();
-            return View("AppointmentAdded", newAppointment);
+            return View("AppointmentAdded", viewModel.Appointment);
 
         }
 

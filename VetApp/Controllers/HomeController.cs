@@ -33,6 +33,7 @@ namespace VetApp.Controllers
             var pet = _context.Pets
                 .Include(p => p.Owner)
                 .Include(p => p.Appointments)
+                .ThenInclude(a => a.Doctor)
                 .ToList().Find(p => p.Id == id);
             
             return View(pet);

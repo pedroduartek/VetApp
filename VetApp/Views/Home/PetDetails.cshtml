@@ -8,7 +8,7 @@
 <table class="table">
     <thead>
         <tr>
-            <th scope="col">LicenseNumber</th>
+            <th scope="col">Id</th>
             <th scope="col">Name</th>
             <th scope="col">Type</th>
             <th scope="col">Birthday</th>
@@ -36,7 +36,7 @@ else
     <table class="table">
         <thead>
         <tr>
-            <th scope="col">LicenseNumber</th>
+            <th scope="col">Id</th>
             <th scope="col">Doctor LicenseNumber</th>
             <th scope="col">Date</th>
         </tr>
@@ -46,7 +46,7 @@ else
         {
             <tr>
                 <th scope="row">@appointment.Id</th>
-                <td><a asp-action="DoctorDetails" asp-route-id="@appointment.DoctorId">@appointment.DoctorId</a></td>
+                <td><a asp-action="DoctorDetails" asp-route-id="@appointment.DoctorId">@appointment.Doctor.Name</a></td>
                 <td>@appointment.Date.Day/@appointment.Date.Month/@appointment.Date.Year</td>
             </tr>
         }

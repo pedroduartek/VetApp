@@ -19,7 +19,7 @@
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" asp-action="Owners" asp-controller="Home">VetApp</a>
+    <a class="navbar-brand" asp-action="Index" asp-controller="Home">VetApp</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -28,7 +28,7 @@
         <ul class="navbar-nav mr-auto">
             
             <li class="nav-item @ViewData["HomeActive"]">
-                <a class="nav-link @ViewData["HomeActive"]" asp-action="Owners" asp-controller="Home">Home</a>
+                <a class="nav-link @ViewData["HomeActive"]" asp-action="Index" asp-controller="Home">Home</a>
             </li>
 
             <li class="nav-item @ViewData["PetsActive"]">

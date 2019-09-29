@@ -58,5 +58,10 @@ body {
 }
 
 .DeleteCross {
-    max-width: 10px;
+    max-width: 15px;
+}
+
+.active {
+    font-size: 1.25rem;
+    font-weight: bolder;
 }

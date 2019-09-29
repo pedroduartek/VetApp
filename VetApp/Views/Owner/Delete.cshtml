@@ -3,6 +3,13 @@
     ViewData["Title"] = "Index";
     ViewData["OwnersActive"] = "active";
 }
+
+<h1>Want to delete this Owner and all is pets?</h1>
+<form asp-action="Delete" method="post">
+    <button class="btn btn-danger" type="submit">Yes</button><a class="btn btn-success" asp-action="Index">No</a>
+</form>
+@ViewBag.ErrorMessage
+
 <table class="table">
     <thead>
         <tr>
@@ -45,7 +52,7 @@ else
             {
                 <tr>
                     <th scope="row">@pet.Id</th>
-                    <td><a asp-action="Details"  asp-controller="Pet" asp-route-id="@pet.Id">@pet.Name</a></td>
+                    <td><a asp-action="Details" asp-controller="Pet" asp-route-id="@pet.Id">@pet.Name</a></td>
                     <td>@pet.Birthday.Day/@pet.Birthday.Month/@pet.Birthday.Year</td>
                     <td>@pet.Appointments.Count</td>
                 </tr>

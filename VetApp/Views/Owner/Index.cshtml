@@ -17,6 +17,7 @@ else
             <tr>
                 <th scope="col">Id</th>
                 <th scope="col">Name</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -25,6 +26,11 @@ else
                 <tr>
                     <th scope="row">@owner.Id</th>
                     <td><a asp-action="Details" asp-route-id="@owner.Id">@owner.Name</a></td>
+                    <td>
+                        <a asp-action="Delete" asp-route-id="@owner.Id">
+                            <img src="images/DeleteCross.png" class="DeleteCross" alt="delete" />
+                        </a>
+                    </td>
                 </tr>
             }
         </tbody>

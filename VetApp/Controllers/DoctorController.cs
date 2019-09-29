@@ -58,7 +58,7 @@ namespace VetApp.Controllers
         }
 
 
-        public IActionResult Delete(int id, bool? saveChangesError)
+        public IActionResult Delete(int? id, bool? saveChangesError)
         {
             if (saveChangesError.GetValueOrDefault())
             {

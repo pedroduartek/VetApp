@@ -6,6 +6,7 @@
 <h3 class="text-center">Book an appointment.</h3>
 
 <form asp-action="Create" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
     <div class="form-group">
         <label asp-for="@Model.Appointment.Date">Date:</label>
         <input asp-for="@Model.Appointment.Date" class="form-control" />

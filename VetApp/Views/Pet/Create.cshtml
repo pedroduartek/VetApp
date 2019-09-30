@@ -1,4 +1,4 @@
-﻿@model Pet
+﻿@model CreatePetViewModel
 @{
     ViewData["Title"] = "Pets";
     ViewData["PetsActive"] = "active";
@@ -8,42 +8,52 @@
 <form asp-action="Create" method="post">
     <div asp-validation-summary="All" class="text-danger"></div>
     <div class="form-group">
-        <label asp-for="Name">Name:</label>
-        <input asp-for="Name" class="form-control" />
-        <span asp-validation-for="Name" class="text-danger"></span>
+        <label asp-for="@Model.Pet.Name">Name:</label>
+        <input asp-for="@Model.Pet.Name" class="form-control" />
+        <span asp-validation-for="@Model.Pet.Name" class="text-danger"></span>
 
     </div>
 
     <div class="form-group">
-        <label asp-for="Birthday">Birthday:</label>
-        <input asp-for="Birthday" type="date" class="form-control" />
-        <span asp-validation-for="Birthday" class="text-danger"></span>
+        <label asp-for="@Model.Pet.Birthday">Birthday:</label>
+        <input asp-for="@Model.Pet.Birthday" type="date" class="form-control" />
+        <span asp-validation-for="@Model.Pet.Birthday" class="text-danger"></span>
     </div>
 
-    <span asp-validation-for="PetType" class="text-danger"></span>
+    <span asp-validation-for="@Model.Pet.PetType" class="text-danger"></span>
     <div class="form-group">
         <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" asp-for="PetType" value="1">
-            <label class="form-check-label" asp-for="PetType">
+            <input class="form-check-input" type="radio" asp-for="@Model.Pet.PetType" value="1">
+            <label class="form-check-label" asp-for@Model.Pet.PetType">
                 Dog
             </label>
         </div>
 
         <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" asp-for="PetType" value="2">
-            <label class="form-check-label" asp-for="PetType">
+            <input class="form-check-input" type="radio" asp-for="@Model.Pet.PetType" value="2">
+            <label class="form-check-label" asp-for="@Model.Pet.PetType">
                 Cat
             </label>
         </div>
 
         <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" asp-for="PetType" value="3">
-            <label class="form-check-label" asp-for="PetType">
+            <input class="form-check-input" type="radio" asp-for="@Model.Pet.PetType" value="3">
+            <label class="form-check-label" asp-for="@Model.Pet.PetType">
                 Bird
             </label>
         </div>
     </div>
 
+    <div class="form-group">
+        <select asp-for="@Model.Pet.OwnerId">
+            <option>Select his Owner</option>
+            @foreach (var owner in Model.Owners)
+            {
+                <option value="@owner.Id">@owner.Id - @owner.Name </option>
+            }
+        </select>
+        <span asp-validation-for="@Model.Pet.OwnerId" class="text-danger"></span>
+    </div>
 
     <button type="submit" class="btn btn-outline-secondary">Register Pet</button>
 </form>

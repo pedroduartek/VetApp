@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using VetApp.Models;
 
-namespace VetApp.Controllers
+namespace VetApp.Models
 {
-    public class AddAppointmentViewModel
+    public class CreateAppointmentViewModel
     {
         public ICollection<Doctor> Doctors { get; set; }
         public Appointment Appointment { get; set; }

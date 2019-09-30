@@ -40,7 +40,7 @@ namespace VetApp.Controllers
 
         public IActionResult Create()
         {
-            var viewModel = new AddAppointmentViewModel
+            var viewModel = new CreateAppointmentViewModel
             {
                 Doctors = _context.Doctors.ToList(),
                 Pets = _context.Pets.ToList()
@@ -51,7 +51,7 @@ namespace VetApp.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(AddAppointmentViewModel viewModel)
+        public IActionResult Create(CreateAppointmentViewModel viewModel)
         {
             if (!ModelState.IsValid) return View();
 

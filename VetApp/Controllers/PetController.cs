@@ -33,9 +33,18 @@ namespace VetApp.Controllers
 
         public IActionResult Create()
         {
-            var newPet = new Pet();
+            var viewModel = new CreatePetViewModel() {Owners = _context.Owners.ToList()};
 
-            return View(newPet);
+            return View(viewModel);
+        }
+        [HttpPost]
+        public IActionResult Create(CreatePetViewModel viewModel)
+        {
+            if (!ModelState.IsValid) return View();
+            _context.Pets.Add(viewModel.Pet);
+            _context.SaveChanges();
+
+            return View("Created", viewModel.Pet);
         }
 
         public IActionResult Created()
@@ -43,17 +52,7 @@ namespace VetApp.Controllers
             return View();
         }
 
-        [HttpPost]
-        public IActionResult Create(Pet newPet)
-        {
-            if (!ModelState.IsValid) return View();
-            _context.Pets.Add(newPet);
-            _context.SaveChanges();
-            return View("Created", newPet);
 
-        }
-
-        
 
         public IActionResult Details(int id)
         {

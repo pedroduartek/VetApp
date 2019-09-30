@@ -5,19 +5,23 @@
 }
 
 <h2>Pets</h2>
+
 @if (Model.Count == 0)
 {
     <h4>Without pets in the Database.</h4>
-    <a asp-controller="NewEntries" asp-action="Create">Add a new one.</a>
+    <a asp-action="Create">Add a new one.</a>
 }
 else
 {
+<a asp-action="Create" class="btn btn-outline-success">Register new Pet</a>
+
     <table class="table">
         <thead>
             <tr>
                 <th scope="col">Id</th>
                 <th scope="col">Name</th>
                 <th scope="col">Owner</th>
+                <th scope="col"> </th>
             </tr>
         </thead>
         <tbody>
@@ -29,6 +33,7 @@ else
                     <th scope="row">@pet.Id</th>
                     <td><a asp-action="Details" asp-route-id="@pet.Id">@pet.Name</a></td>
                     <td>@pet.Owner.Name</td>
+                    <td><a asp-action="Delete" asp-route-id="@pet.Id"><img src="images/DeleteCross.png" class="DeleteCross" alt="DeleteCross" /></a></td>
 
                 </tr>
             }

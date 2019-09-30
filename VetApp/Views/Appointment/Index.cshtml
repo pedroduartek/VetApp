@@ -1,6 +1,6 @@
 ﻿@model List<Appointment>
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Appointments";
     ViewData["AppointmentsActive"] = "active";
 }
 
@@ -12,6 +12,8 @@
 }
 else
 {
+    <a asp-action="Create" class="btn btn-outline-success">Register new Appointment</a>
+
     <table class="table">
         <thead>
             <tr>

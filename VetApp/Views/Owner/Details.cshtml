@@ -3,6 +3,9 @@
     ViewData["Title"] = "Index";
     ViewData["OwnersActive"] = "active";
 }
+
+<a class="btn btn-danger detailsDelete" asp-action="Delete" asp-route-id="@Model.Id">Delete Owner</a>
+
 <table class="table">
     <thead>
         <tr>
@@ -45,7 +48,7 @@ else
             {
                 <tr>
                     <th scope="row">@pet.Id</th>
-                    <td><a asp-action="Details"  asp-controller="Pet" asp-route-id="@pet.Id">@pet.Name</a></td>
+                    <td><a asp-action="Details" asp-controller="Pet" asp-route-id="@pet.Id">@pet.Name</a></td>
                     <td>@pet.Birthday.Day/@pet.Birthday.Month/@pet.Birthday.Year</td>
                     <td>@pet.Appointments.Count</td>
                 </tr>

@@ -4,7 +4,14 @@
     ViewData["OwnersActive"] = "active";
 }
 
-<h1>Want to delete this Owner and all is pets?</h1>
+<h1>
+    Want to delete this Owner
+    @if (Model.Pets.Count > 0)
+    {
+        @:and all is pets
+    }
+    ?
+</h1>
 <form asp-action="Delete" method="post">
     <button class="btn btn-danger" type="submit">Yes</button><a class="btn btn-success" asp-action="Index">No</a>
 </form>
@@ -30,13 +37,9 @@
 </table>
 
 
-@if (Model.Pets.Count == 0)
+@if (Model.Pets.Count > 0)
 {
-    <h3>Owner without pets.</h3>
-    <p><a asp-action="Create" asp-controller="Pet">Register one.</a></p>
-}
-else
-{
+
     <h3>Pets from this owner:</h3>
     <table class="table">
         <thead>

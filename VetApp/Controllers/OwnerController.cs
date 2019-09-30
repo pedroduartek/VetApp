@@ -55,6 +55,10 @@ namespace VetApp.Controllers
 
         public IActionResult Delete(int? id, bool? saveChangesError)
         {
+            if (saveChangesError.GetValueOrDefault())
+            {
+                ViewBag.ErrorMessage = "Delete failed. Try again, and if the problem persists see your system administrator.";
+            }
             var owner = _context.Owners
                 .Include(o => o.Pets)
                 .ThenInclude(p => p.Appointments)

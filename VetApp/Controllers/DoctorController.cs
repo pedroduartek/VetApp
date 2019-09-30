@@ -64,7 +64,11 @@ namespace VetApp.Controllers
             {
                 ViewBag.ErrorMessage = "Delete failed. Try again, and if the problem persists see your system administrator.";
             }
-            var doctor = _context.Doctors.Find(id);
+            var doctor = _context.Doctors
+                .Include(d => d.Appointments)
+                .ThenInclude(a => a.Pet)
+                .ToList()
+                .Find(d => d.LicenseNumber == id);
 
             return View(doctor);
         }

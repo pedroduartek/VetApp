@@ -1,8 +1,9 @@
 ﻿@model Pet
 @{
-    ViewBag.Title = "Register Pet";
+    ViewData["Title"] = "Pets";
+    ViewData["PetsActive"] = "active";
 }
-<h3 class="text-center">Register new owner.</h3>
+<h3 class="text-center">Register new pet.</h3>
 
 <form asp-action="Create" method="post">
     <div class="form-group">
@@ -41,5 +42,7 @@
             </label>
         </div>
     </div>
+    
+
     <button type="submit" class="btn btn-outline-secondary">Register Pet</button>
 </form>

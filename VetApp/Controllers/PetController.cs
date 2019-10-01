@@ -20,7 +20,8 @@ namespace VetApp.Controllers
 
         public IActionResult OwnerRegistered()
         {
-            return View();
+            var owners = _context.Owners.Count();
+            return View(owners);
         }
         public IActionResult Index()
         {

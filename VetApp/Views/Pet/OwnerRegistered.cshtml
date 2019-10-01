@@ -1,9 +1,20 @@
-﻿@{
+﻿@model int
+@{
     ViewData["Title"] = "Pets";
     ViewData["PetsActive"] = "active";
 }
 
-<h2>Owner is registered?</h2>
 
-<a asp-action="Create">Yes</a>
-<a asp-action="Create" asp-controller="Owner">No</a>
+@if (Model > 0)
+{
+    <h2>Owner is registered?</h2>
+
+    <a asp-action="Create">Yes</a>
+    <a asp-action="Create" asp-controller="Owner">No</a>
+}
+else
+{
+    <h2>There are no owners registered in database, to add a pet first <a asp-action="Create" asp-controller="Owner">add a owner</a>.</h2>
+    
+
+}

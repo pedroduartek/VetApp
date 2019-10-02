@@ -11,11 +11,12 @@ namespace VetApp.Models
         public DbSet<Appointment> Appointments { get; set; }
         public DbSet<Doctor> Doctors { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        public VetAppDbContext(DbContextOptions<VetAppDbContext> options) 
+            : base(options)
         {
-            optionsBuilder.UseSqlServer(
-                @"Server=THINKPADDOPEDRO\SQLEXPRESS;Database=VetDataBase;Integrated Security=True");
+            
         }
+        
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

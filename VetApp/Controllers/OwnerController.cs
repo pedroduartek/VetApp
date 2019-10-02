@@ -11,25 +11,22 @@ namespace VetApp.Controllers
 {
     public class OwnerController : Controller
     {
-        private readonly VetAppDbContext _context;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public OwnerController()
+        public OwnerController(IUnitOfWork unitOfWork)
         {
-            _context = new VetAppDbContext();
+            _unitOfWork = unitOfWork;
         }
 
         public IActionResult Index()
         {
-            var owners = _context.Owners.OrderBy(o => o.Id).ToList();
+            var owners = _unitOfWork.Owners.GetOwnersOrderedByName();
 
             return View(owners);
         }
-        public IActionResult Details(int? id)
+        public IActionResult Details(int id)
         {
-            var owner = _context.Owners
-                .Include(o => o.Pets)
-                .ThenInclude(p => p.Appointments)
-                .ToList().Find(o => o.Id == id);
+            var owner = _unitOfWork.Owners.GetOwnerWithPetsWithAppointments(id);
 
 
             return View(owner);
@@ -47,35 +44,33 @@ namespace VetApp.Controllers
         {
             if (!ModelState.IsValid) return View();
 
-            _context.Owners.Add(newOwner);
-            _context.SaveChanges();
+            _unitOfWork.Owners.Add(newOwner);
+            _unitOfWork.Complete();
 
             return RedirectToAction("Create", "Pet");
         }
 
-        public IActionResult Delete(int? id, bool? saveChangesError)
+        public IActionResult Delete(int id, bool? saveChangesError)
         {
             if (saveChangesError.GetValueOrDefault())
             {
                 ViewBag.ErrorMessage = "Delete failed. Try again, and if the problem persists see your system administrator.";
             }
-            var owner = _context.Owners
-                .Include(o => o.Pets)
-                .ThenInclude(p => p.Appointments)
-                .ToList().Find(o => o.Id == id);
+
+            var owner = _unitOfWork.Owners.GetOwnerWithPetsWithAppointments(id);
 
 
             return View(owner);
         }
 
         [HttpPost]
-        public IActionResult Delete(int? id)
+        public IActionResult Delete(int id)
         {
             try
             {
-                var owner = _context.Owners.Find(id);
-                _context.Owners.Remove(owner);
-                _context.SaveChanges();
+                var owner = _unitOfWork.Owners.Get(id);
+                _unitOfWork.Owners.Remove(owner);
+                _unitOfWork.Complete();
             }
             catch (DataException)
             {

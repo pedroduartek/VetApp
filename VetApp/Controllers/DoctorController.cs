@@ -11,29 +11,26 @@ namespace VetApp.Controllers
 {
     public class DoctorController : Controller
     {
-        private readonly VetAppDbContext _context;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public DoctorController()
+        public DoctorController(IUnitOfWork unitOfWork)
         {
-            _context = new VetAppDbContext();
+            _unitOfWork = unitOfWork;
         }
 
         public IActionResult Index()
         {
-            var doctors = _context.Doctors.OrderBy(a => a.Name).ToList();
-
+            var doctors = _unitOfWork.Doctors.GetDoctorsOrderedByName();
+            
             return View(doctors);
         }
 
-        public IActionResult Details(int? id)
+        public IActionResult Details(int id)
         {
-            var doctor = _context.Doctors
-                .Include(d => d.Appointments)
-                .ThenInclude(a => a.Pet)
-                .ToList()
-                .Find(d => d.LicenseNumber == id);
+            var doctor = _unitOfWork.Doctors.GetDoctorWithAppointmentsWithPet(id);
 
             return View(doctor);
+
         }
 
         public IActionResult Create()
@@ -46,8 +43,8 @@ namespace VetApp.Controllers
         {
             if (!ModelState.IsValid) return View();
 
-            _context.Doctors.Add(newDoctor);
-            _context.SaveChanges();
+            _unitOfWork.Doctors.Add(newDoctor);
+            _unitOfWork.Complete();
 
             return View("Created", newDoctor);
         }
@@ -58,29 +55,28 @@ namespace VetApp.Controllers
         }
 
 
-        public IActionResult Delete(int? id, bool? saveChangesError)
+        public IActionResult Delete(int id, bool? saveChangesError)
         {
             if (saveChangesError.GetValueOrDefault())
             {
                 ViewBag.ErrorMessage = "Delete failed. Try again, and if the problem persists see your system administrator.";
             }
-            var doctor = _context.Doctors
-                .Include(d => d.Appointments)
-                .ThenInclude(a => a.Pet)
-                .ToList()
-                .Find(d => d.LicenseNumber == id);
+
+            var doctor = _unitOfWork.Doctors.GetDoctorWithAppointmentsWithPet(id);
+
+            
 
             return View(doctor);
         }
 
         [HttpPost]
-        public IActionResult Delete(int? id)
+        public IActionResult Delete(int id)
         {
             try
             {
-                var doctor = _context.Doctors.Find(id);
-                _context.Doctors.Remove(doctor);
-                _context.SaveChanges();
+                var doctor = _unitOfWork.Doctors.Get(id);
+                _unitOfWork.Doctors.Remove(doctor);
+                _unitOfWork.Complete();
             }
             catch (DataException)
             {

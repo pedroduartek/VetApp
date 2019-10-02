@@ -1,11 +1,11 @@
-﻿@model int
+﻿@model IEnumerable<Owner>
 @{
     ViewData["Title"] = "Pets";
     ViewData["PetsActive"] = "active";
 }
 
 
-@if (Model > 0)
+@if (Model.Any())
 {
     <h2>Owner is registered?</h2>
 

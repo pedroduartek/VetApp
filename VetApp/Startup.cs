@@ -7,8 +7,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using VetApp.Models;
 
 namespace VetApp
 {
@@ -30,7 +32,10 @@ namespace VetApp
             });
 
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            var connection = @"Server=THINKPADDOPEDRO\SQLEXPRESS;Database=VetDataBase;Integrated Security=True";
+            services.AddDbContext<VetAppDbContext>(options => options.UseSqlServer(connection));
+            services.AddScoped<IUnitOfWork>();
+            services.AddMvc();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

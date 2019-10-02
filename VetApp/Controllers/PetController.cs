@@ -11,30 +11,28 @@ namespace VetApp.Controllers
 {
     public class PetController : Controller
     {
-        private readonly VetAppDbContext _context;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public PetController()
+        public PetController(IUnitOfWork unitOfWork)
         {
-            _context = new VetAppDbContext();
+            _unitOfWork = unitOfWork;
         }
 
         public IActionResult OwnerRegistered()
         {
-            var owners = _context.Owners.Count();
+            var owners = _unitOfWork.Owners.GetAll();
             return View(owners);
         }
         public IActionResult Index()
         {
-            var pets = _context.Pets
-                .Include(p => p.Owner)
-                .OrderBy(p => p.Id).ToList();
+            var pets = _unitOfWork.Pets.GetPetsWithOwnersOrderedByName();
 
             return View(pets);
         }
 
         public IActionResult Create()
         {
-            var viewModel = new CreatePetViewModel() {Owners = _context.Owners.ToList()};
+            var viewModel = new CreatePetViewModel() {Owners = _unitOfWork.Owners.GetAll()};
 
             return View(viewModel);
         }
@@ -42,8 +40,8 @@ namespace VetApp.Controllers
         public IActionResult Create(CreatePetViewModel viewModel)
         {
             if (!ModelState.IsValid) return View();
-            _context.Pets.Add(viewModel.Pet);
-            _context.SaveChanges();
+            _unitOfWork.Pets.Add(viewModel.Pet);
+            _unitOfWork.Complete();
 
             return View("Created", viewModel.Pet);
         }
@@ -57,41 +55,35 @@ namespace VetApp.Controllers
 
         public IActionResult Details(int id)
         {
-            var pet = _context.Pets
-                .Include(p => p.Owner)
-                .Include(p => p.Appointments)
-                .ThenInclude(a => a.Doctor)
-                .ToList().Find(p => p.Id == id);
+            var pet = _unitOfWork.Pets.GetPetWithOwnerAndAppointmentsWithDoctor(id);
+
+            
 
             return View(pet);
         }
 
-        public IActionResult Delete(int? id, bool? saveChangesError)
+        public IActionResult Delete(int id, bool? saveChangesError)
         {
             if (saveChangesError.GetValueOrDefault())
             {
                 ViewBag.ErrorMessage = "Delete failed. Try again, and if the problem persists see your system administrator.";
             }
 
-            var pet = _context.Pets
-                .Include(p => p.Owner)
-                .Include(p => p.Appointments)
-                .ThenInclude(a => a.Doctor)
-                .ToList().Find(p => p.Id == id);
+            var pet = _unitOfWork.Pets.GetPetWithOwnerAndAppointmentsWithDoctor(id);
 
 
             return View(pet);
         }
 
         [HttpPost]
-        public IActionResult Delete(int? id)
+        public IActionResult Delete(int id)
         {
             try
             {
-                var pet = _context.Pets.Find(id);
+                var pet = _unitOfWork.Pets.Get(id);
 
-                _context.Pets.Remove(pet);
-                _context.SaveChanges();
+                _unitOfWork.Pets.Remove(pet);
+                _unitOfWork.Complete();
             }
             catch (DataException)
             {

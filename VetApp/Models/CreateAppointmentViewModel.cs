@@ -5,8 +5,8 @@ namespace VetApp.Models
 {
     public class CreateAppointmentViewModel
     {
-        public ICollection<Doctor> Doctors { get; set; }
+        public IEnumerable<Doctor> Doctors { get; set; }
         public Appointment Appointment { get; set; }
-        public ICollection<Pet> Pets { get; set; }
+        public IEnumerable<Pet> Pets { get; set; }
     }
 }

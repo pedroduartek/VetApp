@@ -7,12 +7,12 @@
 }
 
 
-@if (Model.Doctors.Count == 0)
+@if (!Model.Doctors.Any())
 {
     <h4>Without doctors. To book an appointment is needed at least one doctor.</h4>
     <a asp-controller="Doctor" asp-action="Create">Add a new one.</a>
 }
-else if (Model.Appointments.Count == 0)
+else if (!Model.Appointments.Any())
 {
     <h4>Without appointments.</h4>
     <a asp-controller="Appointment" asp-action="Create">Add a new one.</a>

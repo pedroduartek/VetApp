@@ -11,31 +11,26 @@ namespace VetApp.Controllers
 {
     public class AppointmentController : Controller
     {
-        private readonly VetAppDbContext _context;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public AppointmentController()
+        public AppointmentController(IUnitOfWork unitOfWork)
         {
-            _context = new VetAppDbContext();
+            _unitOfWork = unitOfWork;
         }
         public IActionResult Index()
         {
-            var viewModel = new AppointmentsViewModel();
-            viewModel.Appointments = _context.Appointments
-                .Include(a => a.Pet)
-                .ThenInclude(p => p.Owner)
-                .OrderBy(a => a.Date).ToList();
-            viewModel.Doctors = _context.Doctors.ToList();
+            var viewModel = new AppointmentsViewModel
+            {
+                Appointments = _unitOfWork.Appointments.GetAppointmentsWithPetsAndOwnersOrderedByDate(),
+                Doctors = _unitOfWork.Doctors.GetDoctorsOrderedByName()
+            };
 
             return View(viewModel);
         }
 
-        public IActionResult Details(int? id)
+        public IActionResult Details(int id)
         {
-            var appointment = _context.Appointments
-                .Include(a => a.Doctor)
-                .Include(a => a.Pet)
-                .ThenInclude(p => p.Owner)
-                .ToList().Find(a => a.Id == id);
+            var appointment = _unitOfWork.Appointments.GetAppointmentWithDoctorAndPetWithOwner(id);
 
             return View(appointment);
         }
@@ -44,8 +39,8 @@ namespace VetApp.Controllers
         {
             var viewModel = new CreateAppointmentViewModel
             {
-                Doctors = _context.Doctors.ToList(),
-                Pets = _context.Pets.ToList()
+                Doctors = _unitOfWork.Doctors.GetDoctorsOrderedByName(),
+                Pets = _unitOfWork.Pets.GetPetsWithOwnersOrderedByName()
             };
 
 
@@ -57,8 +52,8 @@ namespace VetApp.Controllers
         {
             if (!ModelState.IsValid) return View();
 
-            _context.Appointments.Add(viewModel.Appointment);
-            _context.SaveChanges();
+            _unitOfWork.Appointments.Add(viewModel.Appointment);
+            _unitOfWork.Complete();
             return View("Created", viewModel.Appointment);
 
         }
@@ -68,29 +63,26 @@ namespace VetApp.Controllers
             return View();
         }
 
-        public IActionResult Delete(int? id, bool? saveChangesError)
+        public IActionResult Delete(int id, bool? saveChangesError)
         {
             if (saveChangesError.GetValueOrDefault())
             {
                 ViewBag.ErrorMessage = "Delete failed. Try again, and if the problem persists see your system administrator.";
             }
-            var appointment = _context.Appointments
-                .Include(a => a.Doctor)
-                .Include(a => a.Pet)
-                .ThenInclude(p => p.Owner)
-                .ToList().Find(a => a.Id == id);
+
+            var appointment = _unitOfWork.Appointments.GetAppointmentWithDoctorAndPetWithOwner(id);
 
             return View(appointment);
         }
 
         [HttpPost]
-        public IActionResult Delete(int? id)
+        public IActionResult Delete(int id)
         {
             try
             {
-                var appointment = _context.Appointments.Find(id);
-                _context.Appointments.Remove(appointment);
-                _context.SaveChanges();
+                var appointment = _unitOfWork.Appointments.Get(id);
+                _unitOfWork.Appointments.Remove(appointment);
+                _unitOfWork.Complete();
             }
             catch (DataException)
             {

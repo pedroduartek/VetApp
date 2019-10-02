@@ -31,10 +31,6 @@ namespace VetApp
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-
-            var connection = @"Server=THINKPADDOPEDRO\SQLEXPRESS;Database=VetDataBase;Integrated Security=True";
-            services.AddDbContext<VetAppDbContext>(options => options.UseSqlServer(connection));
-            services.AddScoped<IUnitOfWork>();
             services.AddMvc();
         }
 

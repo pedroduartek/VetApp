@@ -49,12 +49,16 @@ body {
 }
 
 .table {
+    margin: 2rem;
     margin-bottom: 4rem;
     text-align: center;
 }
 
 #menu {
     text-align: center;
+}
+#menu a:hover {
+    text-decoration: none;
 }
 
 .DeleteCross {
@@ -69,3 +73,8 @@ body {
 .detailsDelete {
     float: right;
 }
+
+.btn {
+    margin: 0.5rem;
+}
+

@@ -31,7 +31,7 @@ namespace VetApp
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddMvc();
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

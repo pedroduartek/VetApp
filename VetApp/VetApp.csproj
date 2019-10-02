@@ -1,48 +1,48 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
-  <PropertyGroup>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>netcoreapp2.1</TargetFramework>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <Compile Remove="Migrations\20190925140734_Correction.cs" />
-    <Compile Remove="Migrations\20190925140734_Correction.Designer.cs" />
-    <Compile Remove="Migrations\20190927171757_RelactionAppointmentPet.cs" />
-    <Compile Remove="Migrations\20190927171757_RelactionAppointmentPet.Designer.cs" />
-    <Compile Remove="Migrations\20190927172112_RelactionAppointmentPet.cs" />
-    <Compile Remove="Migrations\20190927172112_RelactionAppointmentPet.Designer.cs" />
-    <Compile Remove="Migrations\20190927172238_RelationshipAppointmentPets.cs" />
-    <Compile Remove="Migrations\20190927172238_RelationshipAppointmentPets.Designer.cs" />
-    <Compile Remove="Migrations\20190928073848_Test1.cs" />
-    <Compile Remove="Migrations\20190928073848_Test1.Designer.cs" />
-    <Compile Remove="Migrations\20190928081107_TestMigration.cs" />
-    <Compile Remove="Migrations\20190928081107_TestMigration.Designer.cs" />
-    <Compile Remove="Migrations\20190928081539_DoctorAppointmentRelation.cs" />
-    <Compile Remove="Migrations\20190928081539_DoctorAppointmentRelation.Designer.cs" />
-    <Compile Remove="Migrations\20190928083559_test2.cs" />
-    <Compile Remove="Migrations\20190928083559_test2.Designer.cs" />
-    <Compile Remove="Migrations\20190928083702_test2.cs" />
-    <Compile Remove="Migrations\20190928083702_test2.Designer.cs" />
-    <Compile Remove="Migrations\20190928084715_test22.cs" />
-    <Compile Remove="Migrations\20190928084715_test22.Designer.cs" />
-    <Compile Remove="Migrations\20190928085014_LetsSee.cs" />
-    <Compile Remove="Migrations\20190928085014_LetsSee.Designer.cs" />
-    <Compile Remove="Migrations\20190928085034_LetsSee.cs" />
-    <Compile Remove="Migrations\20190928085034_LetsSee.Designer.cs" />
-    <Compile Remove="Migrations\20190928090514_LetsSee.cs" />
-    <Compile Remove="Migrations\20190928090514_LetsSee.Designer.cs" />
-    <Compile Remove="Migrations\20191002073442_DoctorLicenseNumberToBigInt.cs" />
-    <Compile Remove="Migrations\20191002073442_DoctorLicenseNumberToBigInt.Designer.cs" />
-  </ItemGroup>
+	<ItemGroup>
+		<Compile Remove="Migrations\20190925140734_Correction.cs" />
+		<Compile Remove="Migrations\20190925140734_Correction.Designer.cs" />
+		<Compile Remove="Migrations\20190927171757_RelactionAppointmentPet.cs" />
+		<Compile Remove="Migrations\20190927171757_RelactionAppointmentPet.Designer.cs" />
+		<Compile Remove="Migrations\20190927172112_RelactionAppointmentPet.cs" />
+		<Compile Remove="Migrations\20190927172112_RelactionAppointmentPet.Designer.cs" />
+		<Compile Remove="Migrations\20190927172238_RelationshipAppointmentPets.cs" />
+		<Compile Remove="Migrations\20190927172238_RelationshipAppointmentPets.Designer.cs" />
+		<Compile Remove="Migrations\20190928073848_Test1.cs" />
+		<Compile Remove="Migrations\20190928073848_Test1.Designer.cs" />
+		<Compile Remove="Migrations\20190928081107_TestMigration.cs" />
+		<Compile Remove="Migrations\20190928081107_TestMigration.Designer.cs" />
+		<Compile Remove="Migrations\20190928081539_DoctorAppointmentRelation.cs" />
+		<Compile Remove="Migrations\20190928081539_DoctorAppointmentRelation.Designer.cs" />
+		<Compile Remove="Migrations\20190928083559_test2.cs" />
+		<Compile Remove="Migrations\20190928083559_test2.Designer.cs" />
+		<Compile Remove="Migrations\20190928083702_test2.cs" />
+		<Compile Remove="Migrations\20190928083702_test2.Designer.cs" />
+		<Compile Remove="Migrations\20190928084715_test22.cs" />
+		<Compile Remove="Migrations\20190928084715_test22.Designer.cs" />
+		<Compile Remove="Migrations\20190928085014_LetsSee.cs" />
+		<Compile Remove="Migrations\20190928085014_LetsSee.Designer.cs" />
+		<Compile Remove="Migrations\20190928085034_LetsSee.cs" />
+		<Compile Remove="Migrations\20190928085034_LetsSee.Designer.cs" />
+		<Compile Remove="Migrations\20190928090514_LetsSee.cs" />
+		<Compile Remove="Migrations\20190928090514_LetsSee.Designer.cs" />
+		<Compile Remove="Migrations\20191002073442_DoctorLicenseNumberToBigInt.cs" />
+		<Compile Remove="Migrations\20191002073442_DoctorLicenseNumberToBigInt.Designer.cs" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.App" />
-    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.0.0" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.App" />
+		<PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+		<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.0.0" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Areas\Identity\Services\" />
-  </ItemGroup>
+	<ItemGroup>
+		<Folder Include="Areas\Identity\Services\" />
+	</ItemGroup>
 
 </Project>

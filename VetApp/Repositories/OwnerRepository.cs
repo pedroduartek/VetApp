@@ -1,9 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using VetApp.Interfaces;
+using VetApp.Models;
 
-namespace VetApp.Models
+namespace VetApp.Repositories
 {
     public class OwnerRepository : Repository<Owner>, IOwnerRepository
     {

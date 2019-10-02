@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace VetApp.Models
+namespace VetApp.Interfaces
 {
     public interface IUnitOfWork : IDisposable
     {

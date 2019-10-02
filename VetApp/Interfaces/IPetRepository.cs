@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using VetApp.Models;
 
-namespace VetApp.Models
+namespace VetApp.Interfaces
 {
     public interface IPetRepository : IRepository<Pet>
     {

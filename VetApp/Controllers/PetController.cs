@@ -5,7 +5,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using VetApp.Interfaces;
 using VetApp.Models;
+using VetApp.ViewModels;
 
 namespace VetApp.Controllers
 {

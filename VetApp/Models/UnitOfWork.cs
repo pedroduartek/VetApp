@@ -1,4 +1,6 @@
 ﻿using System;
+using VetApp.Interfaces;
+using VetApp.Repositories;
 
 namespace VetApp.Models
 {

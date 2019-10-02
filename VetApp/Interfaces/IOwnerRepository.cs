@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using VetApp.Models;
 
-namespace VetApp.Models
+namespace VetApp.Interfaces
 {
     public interface IOwnerRepository : IRepository<Owner>
     {

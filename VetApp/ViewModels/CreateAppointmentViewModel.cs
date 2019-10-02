@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using VetApp.Models;
 
-namespace VetApp.Models
+namespace VetApp.ViewModels
 {
     public class CreateAppointmentViewModel
     {

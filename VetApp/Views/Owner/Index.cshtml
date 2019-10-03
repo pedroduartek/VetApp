@@ -30,9 +30,8 @@ else
                     <th scope="row">@owner.Id</th>
                     <td><a asp-action="Details" asp-route-id="@owner.Id">@owner.Name</a></td>
                     <td>
-                        <a asp-action="Delete" asp-route-id="@owner.Id">
-                            <img src="images/DeleteCross.png" class="DeleteCross" alt="delete" />
-                        </a>
+                        <a asp-action="Update" asp-route-id="@owner.Id"><img src="images/EditPencil.png" class="Icon" alt="edit" /></a>
+                        <a asp-action="Delete" asp-route-id="@owner.Id"><img src="images/DeleteCross.png" class="Icon" alt="delete" /></a>
                     </td>
                 </tr>
             }

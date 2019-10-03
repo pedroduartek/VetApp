@@ -43,7 +43,7 @@ namespace VetApp.Controllers
 
         public IActionResult Create()
         {
-            var viewModel = new CreateAppointmentViewModel
+            var viewModel = new CreateUpdateAppointmentViewModel
             {
                 Doctors = _context.Doctors.ToList(),
                 Pets = _context.Pets.ToList()
@@ -54,7 +54,7 @@ namespace VetApp.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(CreateAppointmentViewModel viewModel)
+        public IActionResult Create(CreateUpdateAppointmentViewModel viewModel)
         {
             if (!ModelState.IsValid) return View();
 
@@ -82,6 +82,36 @@ namespace VetApp.Controllers
                 .ToList().Find(a => a.Id == id);
 
             return View(appointment);
+        }
+
+        public IActionResult Update(int? id)
+        {
+            var viewModel = new CreateUpdateAppointmentViewModel()
+            {
+                Appointment = _context.Appointments.Find(id),
+                Doctors = _context.Doctors.ToList(),
+                Pets = _context.Pets.ToList()
+            };
+
+
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public IActionResult Update(int? id, [Bind("Id, PetId, DoctorId, Date")] Appointment appointment)
+        {
+            
+            if (id != appointment.Id) return NotFound();
+
+            if (!ModelState.IsValid) return View("Update");
+
+
+            _context.Appointments.Attach(appointment);
+            _context.Entry(appointment).State = EntityState.Modified;
+            _context.SaveChanges();
+
+            return View("Updated", appointment);
+
         }
 
         [HttpPost]

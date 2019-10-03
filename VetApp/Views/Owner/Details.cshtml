@@ -4,7 +4,8 @@
     ViewData["OwnersActive"] = "active";
 }
 
-<a class="btn btn-danger detailsButton" asp-action="Delete" asp-route-id="@Model.Id">Delete Owner</a>
+<a class="btn btn-danger detailsButton" asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
+<a class="btn btn-danger detailsButton" asp-action="Update" asp-route-id="@Model.Id">Edit</a>
 
 <table class="table">
     <thead>

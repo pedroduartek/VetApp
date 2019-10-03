@@ -32,9 +32,8 @@ else
                     <td><a asp-action="Details" asp-route-id="@doctor.LicenseNumber">@doctor.Name</a></td>
                     <td>@doctor.Specialty</td>
                     <td>
-                        <a asp-action="Delete" asp-route-id="@doctor.LicenseNumber">
-                            <img src="images/DeleteCross.png" class="DeleteCross" alt="delete" />
-                        </a>
+                        <a asp-action="Update" asp-route-id="@doctor.LicenseNumber"><img src="images/EditPencil.png" class="Icon" alt="edit" /></a>
+                        <a asp-action="Delete" asp-route-id="@doctor.LicenseNumber"><img src="images/DeleteCross.png" class="Icon" alt="delete" /></a>
                     </td>
                 </tr>
             }

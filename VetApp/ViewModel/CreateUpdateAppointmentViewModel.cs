@@ -3,7 +3,7 @@ using VetApp.Models;
 
 namespace VetApp.ViewModel
 {
-    public class CreateAppointmentViewModel
+    public class CreateUpdateAppointmentViewModel
     {
         public ICollection<Doctor> Doctors { get; set; }
         public Appointment Appointment { get; set; }

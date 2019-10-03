@@ -4,7 +4,7 @@
     ViewData["AppointmentsActive"] = "active";
 }
 
-@if (Model.Doctors.Count == 0)
+@if (!Model.Doctors.Any())
 {
     <h4>Without doctors. To book an appointment is needed at least one doctor.</h4>
     <a asp-controller="Doctor" asp-action="Create">Add a new one.</a>
@@ -13,11 +13,14 @@ else
 {
     <h3 class="text-center">Book an appointment.</h3>
 
+
     <form asp-action="Create" method="post">
+        <div asp-validation-summary="All" class="text-danger"></div>
+
         <div class="form-group">
             <label asp-for="@Model.Appointment.Date">Date:</label>
-            <input asp-for="@Model.Appointment.Date" class="form-control" />
-            <span asp-validation-for="@Model.Appointment.Date" class="text-danger"></span>
+            <input asp-for="@Model.Appointment.Date" class="form-control"/>
+            <div asp-validation-for="@Model.Appointment.Date" class="text-danger"></div>
 
         </div>
 
@@ -30,7 +33,7 @@ else
                     <option value="@pet.Id">@pet.Id - @pet.Name (@pet.PetType)</option>
                 }
             </select>
-            <span asp-validation-for="@Model.Appointment.PetId" class="text-danger"></span>
+            <div asp-validation-for="@Model.Appointment.PetId" class="text-danger"></div>
         </div>
 
         <div class="form-group">
@@ -41,7 +44,7 @@ else
                     <option value="@doctor.LicenseNumber">@doctor.Name (@doctor.Specialty)</option>
                 }
             </select>
-            <span asp-validation-for="@Model.Appointment.DoctorId" class="text-danger"></span>
+            <div asp-validation-for="@Model.Appointment.DoctorId" class="text-danger"></div>
         </div>
 
         <button type="submit" class="btn btn-outline-secondary">Book</button>

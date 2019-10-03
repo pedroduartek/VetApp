@@ -6,7 +6,7 @@
 
 <h1>
     Want to delete this doctor
-    @if (Model.Appointments.Count > 0)
+    @if (Model.Appointments.Any())
     {
         @:and all is appointments
     }

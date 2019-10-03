@@ -4,16 +4,17 @@
     ViewData["DoctorsActive"] = "active";
 }
 
-<h2>Index</h2>
 
-@if (Model.Count == 0)
+
+@if (!Model.Any())
 {
     <h4>Without doctors in the Database. </h4>
     <a asp-action="Create">Add a new one.</a>
 }
 else
 {
-    <a asp-action="Create" class="btn btn-outline-success">Register new Doctor</a>
+    <h2>Doctors:</h2>
+    <a asp-action="Create" class="btn btn-success buttonLeft">Register new Doctor</a>
 
     <table class="table">
         <thead>

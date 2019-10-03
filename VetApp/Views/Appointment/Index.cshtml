@@ -20,7 +20,7 @@ else if (!Model.Appointments.Any())
 else
 {
     <h2>Appointments:</h2>
-    <a asp-action="Create" class="btn btn-outline-success">Register new Appointment</a>
+    <a asp-action="Create" class="btn btn-success buttonLeft">Register new Appointment</a>
 
     <table class="table">
         <thead>
@@ -28,6 +28,7 @@ else
                 <th scope="col">Id</th>
                 <th scope="col">Pet</th>
                 <th scope="col">Date</th>
+                <th scope="col"></th>
             </tr>
         </thead>
         <tbody>
@@ -35,9 +36,12 @@ else
             {
                 <tr>
                     <th scope="row"><a asp-action="Details" asp-route-id="@appointment.Id">@appointment.Id</a></th>
-                    <td>@appointment.Pet.Name</td>
+                    <td><a asp-action="Details" asp-route-id="@appointment.PetId">@appointment.Pet.Name</a></td>
                     <td>@appointment.Date.Day/@appointment.Date.Month/@appointment.Date.Year @appointment.Date.Hour:@appointment.Date.Minute</td>
-                    <td><a asp-action="Delete" asp-route-id="@appointment.Id"><img class="Icon" alt="DeleteCross" src="images/DeleteCross.png" /></a></td>
+                    <td>
+                        <a asp-action="Update" asp-route-id="@appointment.Id"><img class="Icon" alt="edit" src="images/EditPencil.png" /></a>
+                        <a asp-action="Delete" asp-route-id="@appointment.Id"><img class="Icon" alt="delete" src="images/DeleteCross.png" /></a>
+                    </td>
                 </tr>
             }
         </tbody>

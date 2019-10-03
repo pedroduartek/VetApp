@@ -9,13 +9,14 @@
 
 
 <form asp-action="Update" method="post">
-    
+    <div asp-validation-summary="All" class="text-danger"></div>
+
     <input type="hidden" asp-for="@Model.Appointment.Id" />
 
     <div class="form-group">
         <label asp-for="@Model.Appointment.Date">Date:</label>
         <input asp-for="@Model.Appointment.Date" class="form-control"/>
-        <span asp-validation-for="@Model.Appointment.Date" class="text-danger"></span>
+        <div asp-validation-for="@Model.Appointment.Date" class="text-danger"></div>
 
     </div>
 
@@ -28,7 +29,7 @@
                 <option value="@pet.Id">@pet.Id - @pet.Name (@pet.PetType)</option>
             }
         </select>
-        <span asp-validation-for="@Model.Appointment.PetId" class="text-danger"></span>
+        <div asp-validation-for="@Model.Appointment.PetId" class="text-danger"></div>
     </div>
 
     <div class="form-group">
@@ -39,7 +40,7 @@
                 <option value="@doctor.LicenseNumber">@doctor.Name (@doctor.Specialty)</option>
             }
         </select>
-        <span asp-validation-for="@Model.Appointment.DoctorId" class="text-danger"></span>
+        <div asp-validation-for="@Model.Appointment.DoctorId" class="text-danger"></div>
     </div>
 
     <button type="submit" class="btn btn-outline-secondary">Edit</button>

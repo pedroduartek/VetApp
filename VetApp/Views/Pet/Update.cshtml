@@ -6,18 +6,20 @@
 <h3 class="text-center">Edit Pet.</h3>
 
 <form asp-action="Update" method="post">
-    <input type="hidden" asp-for="Pet.Id" />
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <input type="hidden" asp-for="Pet.Id"/>
     <div class="form-group">
         <label asp-for="Pet.Name">Name:</label>
-        <input asp-for="Pet.Name" class="form-control" />
-        <span asp-validation-for="Pet.Name" class="text-danger"></span>
+        <input asp-for="Pet.Name" class="form-control"/>
+        <div asp-validation-for="Pet.Name" class="text-danger"></div>
 
     </div>
-
+    
     <div class="form-group">
         <label asp-for="Pet.Birthday">Birthday:</label>
-        <input asp-for="Pet.Birthday" type="date" class="form-control" />
-        <span asp-validation-for="Pet.Birthday" class="text-danger"></span>
+        <input asp-for="Pet.Birthday" type="date" class="form-control"/>
+        <div asp-validation-for="Pet.Birthday" class="text-danger"></div>
     </div>
 
     <span asp-validation-for="Pet.PetType" class="text-danger"></span>
@@ -52,7 +54,7 @@
                 <option value="@owner.Id">@owner.Id - @owner.Name </option>
             }
         </select>
-        <span asp-validation-for="@Model.Pet.OwnerId" class="text-danger"></span>
+        <div asp-validation-for="@Model.Pet.OwnerId" class="text-danger"></div>
     </div>
 
     <button type="submit" class="btn btn-outline-secondary">Edit Pet</button>

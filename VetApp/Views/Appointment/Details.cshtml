@@ -3,10 +3,10 @@
     ViewData["Title"] = "Appointments";
     ViewData["AppointmentsActive"] = "active";
 }
+<h3>Details:</h3>
 
-<a class="btn btn-danger detailsButton" asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
-<a class="btn btn-warning detailsButton" asp-action="Update" asp-route-id="@Model.Id">Edit</a>
-
+<a class="btn btn-danger buttonLeft" asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
+<a class="btn btn-warning buttonLeft" asp-action="Update" asp-route-id="@Model.Id">Edit</a>
 <table class="table">
     <thead>
         <tr>

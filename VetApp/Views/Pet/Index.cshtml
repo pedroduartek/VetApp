@@ -33,7 +33,10 @@ else
                     <th scope="row">@pet.Id</th>
                     <td><a asp-action="Details" asp-route-id="@pet.Id">@pet.Name</a></td>
                     <td>@pet.Owner.Name</td>
-                    <td><a asp-action="Delete" asp-route-id="@pet.Id"><img src="images/DeleteCross.png" class="DeleteCross" alt="DeleteCross" /></a></td>
+                    <td>
+                        <a asp-action="Update" asp-route-id="@pet.Id"><img src="images/EditPencil.png" class="DeleteCross" alt="Edit"/></a>
+                        <a asp-action="Delete" asp-route-id="@pet.Id"><img src="images/DeleteCross.png" class="DeleteCross" alt="Delete"/></a>
+                    </td>
 
                 </tr>
             }

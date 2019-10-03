@@ -1,16 +1,16 @@
-﻿@model int
+﻿@model bool
 @{
     ViewData["Title"] = "Pets";
     ViewData["PetsActive"] = "active";
 }
 
 
-@if (Model > 0)
+@if (Model)
 {
     <h2>Owner is registered?</h2>
 
     <a asp-action="Create">Yes</a>
-    <a asp-action="Create" asp-controller="Owner">No</a>
+    <a asp-action="Create"  asp-controller="Owner">No</a>
 }
 else
 {

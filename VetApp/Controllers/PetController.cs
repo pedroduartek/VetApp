@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using VetApp.Models;
+using VetApp.ViewModel;
 
 namespace VetApp.Controllers
 {
@@ -20,8 +21,9 @@ namespace VetApp.Controllers
 
         public IActionResult OwnerRegistered()
         {
-            var owners = _context.Owners.Count();
-            return View(owners);
+            var owner = _context.Owners.Any();
+
+            return View(owner);
         }
         public IActionResult Index()
         {
@@ -34,12 +36,12 @@ namespace VetApp.Controllers
 
         public IActionResult Create()
         {
-            var viewModel = new CreatePetViewModel() {Owners = _context.Owners.ToList()};
+            var viewModel = new CreateUpdatePetViewModel() { Owners = _context.Owners.ToList() };
 
             return View(viewModel);
         }
         [HttpPost]
-        public IActionResult Create(CreatePetViewModel viewModel)
+        public IActionResult Create(CreateUpdatePetViewModel viewModel)
         {
             if (!ModelState.IsValid) return View();
             _context.Pets.Add(viewModel.Pet);
@@ -55,7 +57,7 @@ namespace VetApp.Controllers
 
 
 
-        public IActionResult Details(int id)
+        public IActionResult Details(int? id)
         {
             var pet = _context.Pets
                 .Include(p => p.Owner)
@@ -64,6 +66,39 @@ namespace VetApp.Controllers
                 .ToList().Find(p => p.Id == id);
 
             return View(pet);
+        }
+
+        public IActionResult Update(int? id)
+        {
+            var viewModel = new CreateUpdatePetViewModel()
+            {
+                Pet = _context.Pets.Find(id),
+                Owners = _context.Owners.ToList()
+            };
+            
+
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public IActionResult Update(int? id,[Bind("Id, Name, Birthday, PetType, OwnerId")] Pet pet)
+        {
+            if (id != pet.Id) return NotFound();
+            
+            if (!ModelState.IsValid) return View("Update");
+
+
+            _context.Pets.Attach(pet);
+            _context.Entry(pet).State = EntityState.Modified;
+            _context.SaveChanges();
+
+            return RedirectToAction("Updated");
+
+        }
+
+        public IActionResult Updated()
+        {
+            return View();
         }
 
         public IActionResult Delete(int? id, bool? saveChangesError)

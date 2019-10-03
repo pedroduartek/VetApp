@@ -1,0 +1,9 @@
+﻿@model Owner
+@{
+    ViewData["Title"] = "Index";
+    ViewData["OwnersActive"] = "active";
+}
+
+    <h3><a asp-action="Details" asp-route-id="@Model.Id">@Model.Name</a> is Registered.</h3>
+
+<a asp-action="Index" asp-controller="Home">Go Back to Home</a>

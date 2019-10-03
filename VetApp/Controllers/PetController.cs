@@ -92,7 +92,7 @@ namespace VetApp.Controllers
             _context.Entry(pet).State = EntityState.Modified;
             _context.SaveChanges();
 
-            return RedirectToAction("Updated");
+            return View("Updated",pet);
 
         }
 

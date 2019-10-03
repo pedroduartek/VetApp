@@ -58,6 +58,30 @@ namespace VetApp.Controllers
             return View();
         }
 
+        public IActionResult Update(int? id)
+        {
+            var doctorToUpdate = _context.Doctors.Find(id);
+
+
+            return View(doctorToUpdate);
+        }
+
+        [HttpPost]
+        public IActionResult Update(int? id, [Bind("LicenseNumber, Name, Birthday, Contact, Specialty")] Doctor doctor)
+        {
+            if (id != doctor.LicenseNumber) return NotFound();
+
+            if (!ModelState.IsValid) return View("Update");
+
+
+            _context.Doctors.Attach(doctor);
+            _context.Entry(doctor).State = EntityState.Modified;
+            _context.SaveChanges();
+
+            return View("Updated", doctor);
+
+        }
+
 
         public IActionResult Delete(int? id, bool? saveChangesError)
         {

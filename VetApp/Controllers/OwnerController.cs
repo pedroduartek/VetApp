@@ -50,7 +50,36 @@ namespace VetApp.Controllers
             _context.Owners.Add(newOwner);
             _context.SaveChanges();
 
-            return RedirectToAction("Create", "Pet");
+            return View("Created", newOwner);
+        }
+
+        public IActionResult Update(int? id)
+        {
+            var ownerToUpdate = _context.Owners.Find(id);
+
+
+            return View(ownerToUpdate);
+        }
+
+        [HttpPost]
+        public IActionResult Update(int? id, [Bind("Id, Name, Birthday, Contact")] Owner owner)
+        {
+            if (id != owner.Id) return NotFound();
+
+            if (!ModelState.IsValid) return View("Update");
+
+
+            _context.Owners.Attach(owner);
+            _context.Entry(owner).State = EntityState.Modified;
+            _context.SaveChanges();
+
+            return View("Updated", owner);
+
+        }
+
+        public IActionResult Updated()
+        {
+            return View();
         }
 
         public IActionResult Delete(int? id, bool? saveChangesError)

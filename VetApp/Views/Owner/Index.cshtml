@@ -4,7 +4,6 @@
     ViewData["OwnersActive"] = "active";
 }
 
-<h2>Owners</h2>
 
 @if (!Model.Any())
 {
@@ -13,6 +12,8 @@
 }
 else
 {
+    <h2>Owners</h2>
+
     <a asp-action="Create" class="btn btn-outline-success">Register new Owner</a>
 
     <table class="table">

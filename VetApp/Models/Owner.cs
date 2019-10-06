@@ -10,5 +10,7 @@ namespace VetApp.Models
         public DateTime Birthday { get; set; }
         public string Contact { get; set; }
         public ICollection<Pet> Pets { get; set; }
+        public string Email { get; set; }
+
     }
 }

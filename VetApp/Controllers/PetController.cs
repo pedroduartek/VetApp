@@ -36,7 +36,11 @@ namespace VetApp.Controllers
 
         public IActionResult Create()
         {
-            var viewModel = new CreateUpdatePetViewModel() { Owners = _context.Owners.ToList() };
+            var viewModel = new CreateUpdatePetViewModel()
+            {
+                Owners = _context.Owners.ToList(),
+                Pet = new Pet()
+            };
 
             return View(viewModel);
         }

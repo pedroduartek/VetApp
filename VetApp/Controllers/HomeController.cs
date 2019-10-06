@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Linq;
 using System.Net;
+using System.Net.Mail;
 using Microsoft.EntityFrameworkCore;
 using VetApp.Models;
 
@@ -11,6 +12,7 @@ namespace VetApp.Controllers
     {
         public IActionResult Index()
         {
+           
             return View();
         }
     }

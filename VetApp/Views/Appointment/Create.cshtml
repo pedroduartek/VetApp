@@ -1,4 +1,5 @@
 ﻿@model VetApp.ViewModel.CreateUpdateAppointmentViewModel
+
 @{
     ViewData["Title"] = "Appointments";
     ViewData["AppointmentsActive"] = "active";
@@ -45,6 +46,15 @@ else
                 }
             </select>
             <div asp-validation-for="@Model.Appointment.DoctorId" class="text-danger"></div>
+        </div>
+        
+        <div class="form-group">
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" checked="checked" type="checkbox" asp-for="SendEmail" value="true">
+                <label class="form-check-label" asp-for="SendEmail">
+                    Send Email to Owner and Doctor.
+                </label>
+            </div>
         </div>
 
         <button type="submit" class="btn btn-outline-secondary">Book</button>

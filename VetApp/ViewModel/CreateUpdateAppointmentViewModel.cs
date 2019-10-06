@@ -8,5 +8,6 @@ namespace VetApp.ViewModel
         public ICollection<Doctor> Doctors { get; set; }
         public Appointment Appointment { get; set; }
         public ICollection<Pet> Pets { get; set; }
+        public bool SendEmail { get; set; }
     }
 }

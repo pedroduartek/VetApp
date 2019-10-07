@@ -1,0 +1,20 @@
+﻿@model bool
+@{
+    ViewData["Title"] = "Pets";
+    ViewData["PetsActive"] = "active";
+}
+
+
+@if (Model)
+{
+    <h2>Owner is registered?</h2>
+
+    <a asp-action="Create">Yes</a>
+    <a asp-action="Create"  asp-controller="Owners">No</a>
+}
+else
+{
+    <h2>There are no owners registered in database, to add a pet first <a asp-action="Create" asp-controller="Owners">add a owner</a>.</h2>
+    
+
+}

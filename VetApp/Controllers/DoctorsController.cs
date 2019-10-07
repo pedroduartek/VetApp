@@ -10,11 +10,11 @@ using VetApp.Models;
 
 namespace VetApp.Controllers
 {
-    public class DoctorController : Controller
+    public class DoctorsController : Controller
     {
         private readonly VetAppDbContext _context;
 
-        public DoctorController()
+        public DoctorsController()
         {
             _context = new VetAppDbContext();
         }

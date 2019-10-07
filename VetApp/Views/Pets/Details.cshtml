@@ -22,7 +22,7 @@
             <td>@Model.Name</td>
             <td>@Model.PetType</td>
             <td>@Model.Birthday.Day/@Model.Birthday.Month/@Model.Birthday.Year</td>
-            <td><a asp-action="Details" asp-controller="Owner" asp-route-id="@Model.Owner.Id">@Model.Owner.Name</a></td>
+            <td><a asp-action="Details" asp-controller="Owners" asp-route-id="@Model.Owner.Id">@Model.Owner.Name</a></td>
         </tr>
     </tbody>
 </table>
@@ -30,7 +30,7 @@
 @if (Model.Appointments.Count == 0)
 {
     <h3>Without appointments.</h3>
-    <p><a asp-action="Create" asp-controller="Appointment">Book one.</a></p>
+    <p><a asp-action="Create" asp-controller="Appointments">Book one.</a></p>
 }
 else
 {
@@ -48,7 +48,7 @@ else
             {
                 <tr>
                     <th scope="row">@appointment.Id</th>
-                    <td><a asp-action="Details" asp-controller="Doctor" asp-route-id="@appointment.DoctorId">@appointment.Doctor.Name</a></td>
+                    <td><a asp-action="Details" asp-controller="Doctors" asp-route-id="@appointment.DoctorId">@appointment.Doctor.Name</a></td>
                     <td>@appointment.Date.Day/@appointment.Date.Month/@appointment.Date.Year</td>
                 </tr>
             }

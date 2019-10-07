@@ -12,11 +12,11 @@ using VetApp.ViewModel;
 
 namespace VetApp.Controllers
 {
-    public class AppointmentController : Controller
+    public class AppointmentsController : Controller
     {
         private readonly VetAppDbContext _context;
 
-        public AppointmentController()
+        public AppointmentsController()
         {
             _context = new VetAppDbContext();
         }

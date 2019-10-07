@@ -33,7 +33,7 @@
             <td>@Model.Name</td>
             <td>@Model.PetType</td>
             <td>@Model.Birthday.Day/@Model.Birthday.Month/@Model.Birthday.Year</td>
-            <td><a asp-action="Details" asp-controller="Owner" asp-route-id="@Model.Owner.Id">@Model.Owner.Name</a></td>
+            <td><a asp-action="Details" asp-controller="Owners" asp-route-id="@Model.Owner.Id">@Model.Owner.Name</a></td>
         </tr>
     </tbody>
 </table>
@@ -54,7 +54,7 @@
             {
                 <tr>
                     <th scope="row">@appointment.Id</th>
-                    <td><a asp-action="Details" asp-controller="Doctor" asp-route-id="@appointment.DoctorId">@appointment.Doctor.Name</a></td>
+                    <td><a asp-action="Details" asp-controller="Doctors" asp-route-id="@appointment.DoctorId">@appointment.Doctor.Name</a></td>
                     <td>@appointment.Date.Day/@appointment.Date.Month/@appointment.Date.Year</td>
                 </tr>
             }

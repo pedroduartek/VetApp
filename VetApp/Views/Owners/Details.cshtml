@@ -30,7 +30,7 @@
 @if (!Model.Pets.Any())
 {
     <h3>Owner without pets.</h3>
-    <p><a asp-action="Create" asp-controller="Pet">Register one.</a></p>
+    <p><a asp-action="Create" asp-controller="Pets">Register one.</a></p>
 }
 else
 {
@@ -49,7 +49,7 @@ else
             {
                 <tr>
                     <th scope="row">@pet.Id</th>
-                    <td><a asp-action="Details" asp-controller="Pet" asp-route-id="@pet.Id">@pet.Name</a></td>
+                    <td><a asp-action="Details" asp-controller="Pets" asp-route-id="@pet.Id">@pet.Name</a></td>
                     <td>@pet.Birthday.Day/@pet.Birthday.Month/@pet.Birthday.Year</td>
                     <td>@pet.Appointments.Count</td>
                 </tr>

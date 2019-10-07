@@ -8,7 +8,7 @@
 @if (!Model.Doctors.Any())
 {
     <h4>Without doctors. To book an appointment is needed at least one doctor.</h4>
-    <a asp-controller="Doctor" asp-action="Create">Add a new one.</a>
+    <a asp-controller="Doctors" asp-action="Create">Add a new one.</a>
 }
 else
 {

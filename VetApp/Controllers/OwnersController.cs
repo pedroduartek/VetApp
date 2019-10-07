@@ -9,11 +9,11 @@ using VetApp.Models;
 
 namespace VetApp.Controllers
 {
-    public class OwnerController : Controller
+    public class OwnersController : Controller
     {
         private readonly VetAppDbContext _context;
 
-        public OwnerController()
+        public OwnersController()
         {
             _context = new VetAppDbContext();
         }

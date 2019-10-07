@@ -23,10 +23,10 @@
     <tbody>
         <tr>
             <th scope="row">@Model.Id</th>
-            <td><a asp-action="Details" asp-controller="Pet" asp-route-id="@Model.Pet.Id">@Model.Pet.Name</a></td>
-            <td><a asp-action="Details" asp-controller="Owner" asp-route-id="@Model.Pet.Owner.Id">@Model.Pet.Owner.Name</a></td>
+            <td><a asp-action="Details" asp-controller="Pets" asp-route-id="@Model.Pet.Id">@Model.Pet.Name</a></td>
+            <td><a asp-action="Details" asp-controller="Owners" asp-route-id="@Model.Pet.Owner.Id">@Model.Pet.Owner.Name</a></td>
             <td>@Model.Date.Day/@Model.Date.Month/@Model.Date.Year @Model.Date.Hour:@Model.Date.Minute</td>
-            <td><a asp-action="Details" asp-controller="Doctor" asp-route-id="@Model.DoctorId">@Model.Doctor.Name</a></td>
+            <td><a asp-action="Details" asp-controller="Doctors" asp-route-id="@Model.DoctorId">@Model.Doctor.Name</a></td>
         </tr>
     </tbody>
 </table>

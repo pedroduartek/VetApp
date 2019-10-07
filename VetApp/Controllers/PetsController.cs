@@ -10,11 +10,11 @@ using VetApp.ViewModel;
 
 namespace VetApp.Controllers
 {
-    public class PetController : Controller
+    public class PetsController : Controller
     {
         private readonly VetAppDbContext _context;
 
-        public PetController()
+        public PetsController()
         {
             _context = new VetAppDbContext();
         }

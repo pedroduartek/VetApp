@@ -49,7 +49,7 @@ else
                 <tr>
                     <th scope="row"><a asp-action="Details" asp-route-id="@appointment.Id">@appointment.Id</a></th>
                     <td>@appointment.Date.Day/@appointment.Date.Month/@appointment.Date.Year @appointment.Date.Hour:@appointment.Date.Minute</td>
-                    <td><a asp-action="Details" asp-controller="Pet" asp-route-id="@appointment.PetId">@appointment.Pet.Id @appointment.Pet.Name</a></td>
+                    <td><a asp-action="Details" asp-controller="Pets" asp-route-id="@appointment.PetId">@appointment.Pet.Id @appointment.Pet.Name</a></td>
                 </tr>
             }
 

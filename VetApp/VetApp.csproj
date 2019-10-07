@@ -42,6 +42,7 @@
 
   <ItemGroup>
     <Folder Include="Areas\Identity\Services\" />
+    <Folder Include="Controllers\NewFolder\" />
   </ItemGroup>
 
   <ItemGroup>

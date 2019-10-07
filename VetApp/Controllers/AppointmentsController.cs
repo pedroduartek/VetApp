@@ -22,12 +22,14 @@ namespace VetApp.Controllers
         }
         public IActionResult Index()
         {
-            var viewModel = new AppointmentsViewModel();
-            viewModel.Appointments = _context.Appointments
-                .Include(a => a.Pet)
-                .ThenInclude(p => p.Owner)
-                .OrderBy(a => a.Date).ToList();
-            viewModel.Doctors = _context.Doctors.ToList();
+            var viewModel = new AppointmentsViewModel
+            {
+                Appointments = _context.Appointments
+                    .Include(a => a.Pet)
+                    .ThenInclude(p => p.Owner)
+                    .OrderBy(a => a.Date).ToList(),
+                Doctors = _context.Doctors.ToList()
+            };
 
             return View(viewModel);
         }
